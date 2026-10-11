@@ -1,0 +1,2897 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth scroll-pt-4 motion-reduce:scroll-auto">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Tanzania eServices</title>
+
+    <!-- PLUS JAKARTA SANS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- TAILWIND CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        jakarta: ['Plus Jakarta Sans', 'sans-serif']
+                    }
+                }
+            }
+        };
+    </script>
+
+    <!-- ALPINE JS -->
+    <script
+        defer
+        src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+</head>
+
+<body
+    x-data="{
+        english: false,
+        mobileMenu: false,
+        searchQuery: ''
+    }"
+    class="min-w-0 overflow-x-hidden bg-white font-jakarta text-gray-900 antialiased
+           [&_svg]:max-w-full [&_a]:[-webkit-tap-highlight-color:transparent]
+           motion-reduce:[&_*]:!transition-none"
+>
+
+    <!-- =====================================================
+         HERO / BACKGROUND
+    ====================================================== -->
+
+    <div
+        id="home"
+        class="relative min-h-[440px] bg-[url('eServices%20assets/Background%20image.png')]
+               bg-cover bg-center bg-no-repeat
+               sm:min-h-[480px] md:min-h-[520px]"
+    >
+        <div class="pointer-events-none absolute inset-0 bg-black/[0.04]"></div>
+
+        <div class="relative z-10">
+
+            <!-- HEADER -->
+            <header class="w-full">
+
+                <!-- TOP UTILITY BAR -->
+                <div
+                    class="relative mx-auto flex h-[30px] w-[94%] max-w-[1280px]
+                           items-center justify-between bg-gray-200 px-3
+                           sm:h-[34px] sm:w-[92%] sm:px-5
+                           md:h-[36px] md:w-[90%] md:px-8 lg:px-10"
+                >
+                    <!-- SOCIAL MEDIA -->
+                    <div class="flex shrink-0 items-center gap-[6px] sm:gap-3">
+                        <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer"
+                           aria-label="Twitter" class="flex h-[13px] w-[13px] items-center justify-center">
+                            <img src="eServices assets/Twitter.png" alt="Twitter" class="h-full w-full object-contain">
+                        </a>
+
+                        <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer"
+                           aria-label="LinkedIn" class="flex h-[13px] w-[13px] items-center justify-center">
+                            <img src="eServices assets/Linkledin.png" alt="LinkedIn" class="h-full w-full object-contain">
+                        </a>
+
+                        <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer"
+                           aria-label="Facebook" class="flex h-[13px] w-[13px] items-center justify-center">
+                            <img src="eServices assets/Facebook.png" alt="Facebook" class="h-full w-full object-contain">
+                        </a>
+
+                        <a href="https://github.com/" target="_blank" rel="noopener noreferrer"
+                           aria-label="GitHub" class="flex h-[13px] w-[13px] items-center justify-center">
+                            <img src="eServices assets/Github.png" alt="GitHub" class="h-full w-full object-contain">
+                        </a>
+                    </div>
+
+                    <!-- ANNOUNCEMENT -->
+                    <p class="absolute left-1/2 hidden -translate-x-1/2 whitespace-nowrap
+                              text-[8px] font-medium text-gray-500 sm:block md:text-[9px] lg:text-[10px]">
+                        Saa za Kufunguliwa kwa Ofisi za Serikali
+                        Jumatatu - Ijumaa, Saa 8:00 Asubuhi - Saa 5:00 Jioni
+                    </p>
+
+                    <!-- LANGUAGE SWITCH -->
+                    <div class="flex shrink-0 items-center gap-1 sm:gap-2">
+                        <span class="whitespace-nowrap text-[8px] font-medium text-gray-600 sm:text-[9px]"
+                              x-text="english ? 'Swahili' : 'English'"></span>
+
+                        <button
+                            type="button"
+                            @click="english = !english"
+                            :aria-checked="english.toString()"
+                            role="switch"
+                            aria-label="Change language"
+                            class="relative flex h-[18px] w-[35px] shrink-0 items-center
+                                   rounded-full border shadow-sm transition-all duration-200
+                                   md:h-[21px] md:w-[42px]"
+                            :class="english ? 'border-green-600 bg-green-500' : 'border-gray-300 bg-white'"
+                        >
+                            <span
+                                class="absolute left-[2px] top-[2px] h-[12px] w-[12px] rounded-full
+                                       bg-white shadow-[0_1px_4px_rgba(0,0,0,0.30)]
+                                       transition-transform duration-200 md:h-[14px] md:w-[14px]"
+                                :class="english ? 'translate-x-[17px] md:translate-x-[21px]' : 'translate-x-0'"
+                            ></span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- MAIN NAVIGATION -->
+                <div class="relative mx-auto w-[94%] max-w-[1280px] sm:w-[92%] md:w-[90%]">
+                    <nav class="relative flex h-[50px] w-full items-center justify-between
+                                bg-white px-3 shadow-sm sm:h-[56px] sm:px-5 md:h-[62px] md:px-7 lg:px-10">
+
+                        <a href="#home" class="flex shrink-0 items-center">
+                            <img
+                                src="eServices assets/eService logo.png"
+                                alt="Tanzania eServices"
+                                class="h-[31px] w-auto max-w-[115px] object-contain
+                                       sm:h-[36px] sm:max-w-[145px] md:h-[42px]
+                                       md:max-w-[165px] lg:h-[46px]"
+                            >
+                        </a>
+
+                        <div class="hidden flex-1 items-center justify-center gap-5 md:flex lg:gap-8">
+                            <a href="#home" class="text-[9px] font-semibold text-gray-700 transition hover:text-green-600 lg:text-[11px]">
+                                Nyumbani
+                            </a>
+                            <a href="#wizara" class="text-[9px] font-medium text-gray-600 transition hover:text-green-600 lg:text-[11px]">
+                                Wizara
+                            </a>
+                            <a href="#msaada" class="text-[9px] font-medium text-gray-600 transition hover:text-green-600 lg:text-[11px]">
+                                Msaada
+                            </a>
+                        </div>
+
+                        <div class="hidden shrink-0 items-center gap-3 md:flex lg:gap-4">
+                            <a href="#ingia" class="text-[9px] font-semibold text-gray-700 lg:text-[11px]">
+                                Ingia
+                            </a>
+                            <a href="#jiandikishe"
+                               class="inline-flex h-[25px] items-center justify-center rounded-full
+                                      bg-green-600 px-3 text-[8px] font-semibold text-white
+                                      lg:h-[30px] lg:px-4 lg:text-[10px]">
+                                Jiandikishe
+                            </a>
+                        </div>
+
+                        <!-- MOBILE MENU BUTTON -->
+                        <button
+                            type="button"
+                            @click="mobileMenu = !mobileMenu"
+                            :aria-expanded="mobileMenu.toString()"
+                            aria-label="Toggle navigation menu"
+                            class="flex h-[30px] w-[30px] items-center justify-center
+                                   rounded border border-gray-200 text-gray-700 md:hidden"
+                        >
+                            <svg x-show="!mobileMenu" xmlns="http://www.w3.org/2000/svg"
+                                 viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                 stroke-width="2" class="h-4 w-4">
+                                <path d="M4 6h16"></path>
+                                <path d="M4 12h16"></path>
+                                <path d="M4 18h16"></path>
+                            </svg>
+
+                            <svg x-cloak x-show="mobileMenu" xmlns="http://www.w3.org/2000/svg"
+                                 viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                 stroke-width="2" class="h-4 w-4 [&[x-cloak]]:!hidden">
+                                <path d="M6 6l12 12"></path>
+                                <path d="M18 6L6 18"></path>
+                            </svg>
+                        </button>
+                    </nav>
+
+                    <!-- MOBILE MENU -->
+                    <div
+                        x-cloak
+                        x-show="mobileMenu"
+                        x-transition
+                        @click.outside="mobileMenu = false"
+                        class="absolute left-0 right-0 top-full z-50 bg-white px-4 py-3 shadow-lg md:hidden [&[x-cloak]]:!hidden"
+                    >
+                        <div class="flex flex-col gap-1">
+                            <a href="#home" @click="mobileMenu = false"
+                               class="rounded px-3 py-2 text-xs text-gray-700 hover:bg-gray-50">
+                                Nyumbani
+                            </a>
+                            <a href="#wizara" @click="mobileMenu = false"
+                               class="rounded px-3 py-2 text-xs text-gray-700 hover:bg-gray-50">
+                                Wizara
+                            </a>
+                            <a href="#msaada" @click="mobileMenu = false"
+                               class="rounded px-3 py-2 text-xs text-gray-700 hover:bg-gray-50">
+                                Msaada
+                            </a>
+
+                            <div class="mt-1 border-t border-gray-100 pt-2">
+                                <a href="#ingia" @click="mobileMenu = false"
+                                   class="block rounded-full border border-gray-200 py-2 text-center text-xs">
+                                    Ingia
+                                </a>
+                                <a href="#jiandikishe" @click="mobileMenu = false"
+                                   class="mt-2 block rounded-full bg-green-600 py-2 text-center text-xs text-white">
+                                    Jiandikishe
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- HERO CONTENT -->
+            <main>
+                <section class="flex justify-center px-3 sm:px-5">
+                    <div class="flex w-full max-w-[1080px] flex-col items-center pt-[22px] sm:pt-[28px] md:pt-[42px]">
+
+                        <div class="inline-flex min-h-[22px] items-center justify-center gap-1 rounded-full
+                                    bg-green-100/90 px-3 text-[7px] font-semibold text-green-700
+                                    sm:min-h-[25px] sm:px-4 sm:text-[9px] md:min-h-[27px] md:text-[10px]">
+                            <span class="h-[5px] w-[5px] rounded-full bg-green-500"></span>
+                            SERIKALI DIGITALI YA TANZANIA
+                        </div>
+
+                        <h1 class="mt-[8px] max-w-full text-center text-[19px] font-semibold leading-[1.2]
+                                   text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.65)]
+                                   sm:text-[25px] md:mt-[10px] md:text-[34px] lg:text-[38px]">
+                            Huduma za Taifa,
+                            <span class="text-yellow-400">Kidijitali</span>
+                            na
+                            <span class="relative inline-block">
+                                Rahisi
+                                <img src="eServices assets/Rahisi Highlight.png" alt="" aria-hidden="true"
+                                     class="absolute -right-[18px] -top-[9px] h-[12px] w-[18px] object-contain
+                                            sm:-right-[22px] sm:h-[16px] sm:w-[24px]
+                                            md:-right-[25px] md:h-[18px] md:w-[28px]">
+                            </span>
+                        </h1>
+
+                        <!-- SEARCH BAR -->
+                        <form
+                            role="search"
+                            @submit.prevent="$dispatch('search-services', searchQuery)"
+                            class="relative mt-[12px] flex h-[40px] w-[94%] max-w-[920px] items-center
+                                   rounded-full border border-white/50 bg-white/[0.94] px-4
+                                   shadow-[0_5px_18px_rgba(0,0,0,0.18)]
+                                   sm:mt-[15px] sm:h-[46px] sm:px-5 md:h-[50px]"
+                        >
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                 fill="none" stroke="currentColor" stroke-width="2"
+                                 aria-hidden="true"
+                                 class="h-[16px] w-[16px] shrink-0 translate-x-[260px] text-gray-800
+                                        max-md:translate-x-0
+                                        sm:h-[18px] sm:w-[18px]">
+                                <circle cx="10" cy="10" r="7.5"></circle>
+                                <path d="m16 16 5 5"></path>
+                            </svg>
+
+                            <input
+                                type="search"
+                                x-model="searchQuery"
+                                placeholder="Tafuta Huduma... Kitambulisho, leseni ya biashara etc"
+                                aria-label="Tafuta huduma"
+                                class="h-full w-full min-w-0 bg-transparent px-3 text-center text-[9px]
+                                       font-medium text-gray-900 outline-none placeholder:text-gray-500
+                                       sm:text-[11px] md:text-[12px]"
+                            >
+                        </form>
+
+                        <!-- HUDUMA MAARUFU -->
+                        <section
+                            id="huduma-maarufu"
+                            class="relative mx-auto mt-[15px] w-full max-w-[1004px] -translate-y-[9px]
+                                   overflow-hidden text-white transition-transform duration-[250ms] ease-[ease]
+                                   sm:mt-[18px] md:mt-[20px]"
+                        >
+                            <div
+                                class="pointer-events-none absolute left-1/2 top-0 z-0 h-[200px] w-[min(1004px,100%)]
+                                       -translate-x-1/2 translate-y-[2px]
+                                       bg-[linear-gradient(to_bottom,rgba(0,0,0,0.09)_2%,rgba(0,0,0,0)_45%,rgba(0,0,0,0.03)_100%)]
+                                       transition-all duration-[250ms] ease-[ease]
+                                       max-md:h-[155px] max-md:w-full
+                                       max-[520px]:h-[150px]"
+                            ></div>
+
+                            <div class="relative z-10 h-full w-full px-3 pb-3 pt-[8px]
+                                        sm:px-6 sm:pt-[10px] md:px-[55px] md:pt-[12px]">
+                                <h2 class="-translate-x-[10px] text-center text-[13px] font-semibold
+                                           tracking-[0.01em] drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]
+                                           max-md:translate-x-0
+                                           sm:text-[16px] md:text-[18px]">
+                                    Huduma Maarufu
+                                </h2>
+
+                                <div class="mt-[8px] grid grid-cols-2 gap-x-4 gap-y-1 sm:gap-x-8 sm:gap-y-2 md:mt-[12px] md:gap-x-[55px]">
+
+                                    <!-- PASSPORT -->
+                                    <a href="#passport"
+                                       class="flex min-h-[34px] min-w-0 items-center gap-[10px] text-[12px] font-medium text-white no-underline transition-colors duration-200 hover:text-green-200 focus-visible:rounded-[4px] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-green-200 max-md:min-h-[30px] max-md:gap-[6px] max-md:text-[9px] max-[520px]:min-h-[28px] max-[520px]:gap-[5px] max-[520px]:text-[8px] max-[350px]:gap-[3px] max-[350px]:text-[7px]">
+                                        <img src="eServices assets/Ombi la paspoti.png" alt=""
+                                             class="h-[23px] w-[23px] shrink-0 translate-x-[150px] object-contain max-md:h-[17px] max-md:w-[17px] max-md:translate-x-0 max-[520px]:h-[14px] max-[520px]:w-[14px] max-[350px]:h-[12px] max-[350px]:w-[12px]">
+                                        <span class="min-w-0 translate-x-[150px] [overflow-wrap:anywhere] max-md:translate-x-0">Ombi la Pasipoti ya Tanzania</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"
+                                             class="ml-auto h-[17px] w-[17px] shrink-0 -translate-x-[20px] max-md:h-[12px] max-md:w-[12px] max-md:translate-x-0 max-[520px]:h-[10px] max-[520px]:w-[10px] max-[350px]:h-[9px] max-[350px]:w-[9px]">
+                                            <path d="M4 12h16"></path><path d="m14 6 6 6-6 6"></path>
+                                        </svg>
+                                    </a>
+
+                                    <!-- HEALTH INSURANCE -->
+                                    <a href="#health-insurance"
+                                       class="flex min-h-[34px] min-w-0 items-center gap-[10px] text-[12px] font-medium text-white no-underline transition-colors duration-200 hover:text-green-200 focus-visible:rounded-[4px] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-green-200 max-md:min-h-[30px] max-md:gap-[6px] max-md:text-[9px] max-[520px]:min-h-[28px] max-[520px]:gap-[5px] max-[520px]:text-[8px] max-[350px]:gap-[3px] max-[350px]:text-[7px]">
+                                        <img src="eServices assets/Bima ya taifa.png" alt=""
+                                             class="h-[23px] w-[23px] shrink-0 -translate-x-[30px] object-contain max-md:h-[17px] max-md:w-[17px] max-md:translate-x-0 max-[520px]:h-[14px] max-[520px]:w-[14px] max-[350px]:h-[12px] max-[350px]:w-[12px]">
+                                        <span class="min-w-0 -translate-x-[30px] [overflow-wrap:anywhere] max-md:translate-x-0">Mfuko wa Taifa wa Bima ya Afya</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"
+                                             class="ml-auto h-[17px] w-[17px] shrink-0 -translate-x-[190px] max-md:h-[12px] max-md:w-[12px] max-md:translate-x-0 max-[520px]:h-[10px] max-[520px]:w-[10px] max-[350px]:h-[9px] max-[350px]:w-[9px]">
+                                            <path d="M4 12h16"></path><path d="m14 6 6 6-6 6"></path>
+                                        </svg>
+                                    </a>
+
+                                    <!-- DRIVING LICENSE -->
+                                    <a href="#driving-license"
+                                       class="flex min-h-[34px] min-w-0 items-center gap-[10px] text-[12px] font-medium text-white no-underline transition-colors duration-200 hover:text-green-200 focus-visible:rounded-[4px] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-green-200 max-md:min-h-[30px] max-md:gap-[6px] max-md:text-[9px] max-[520px]:min-h-[28px] max-[520px]:gap-[5px] max-[520px]:text-[8px] max-[350px]:gap-[3px] max-[350px]:text-[7px]">
+                                        <img src="eServices assets/Ombi la leseni .png" alt=""
+                                             class="h-[23px] w-[23px] shrink-0 translate-x-[150px] object-contain max-md:h-[17px] max-md:w-[17px] max-md:translate-x-0 max-[520px]:h-[14px] max-[520px]:w-[14px] max-[350px]:h-[12px] max-[350px]:w-[12px]">
+                                        <span class="min-w-0 translate-x-[150px] [overflow-wrap:anywhere] max-md:translate-x-0">Ombi la Leseni ya Udereva</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"
+                                             class="ml-auto h-[17px] w-[17px] shrink-0 -translate-x-[20px] max-md:h-[12px] max-md:w-[12px] max-md:translate-x-0 max-[520px]:h-[10px] max-[520px]:w-[10px] max-[350px]:h-[9px] max-[350px]:w-[9px]">
+                                            <path d="M4 12h16"></path><path d="m14 6 6 6-6 6"></path>
+                                        </svg>
+                                    </a>
+
+                                    <!-- VISITORS -->
+                                    <a href="#visitor-registration"
+                                       class="flex min-h-[34px] min-w-0 items-center gap-[10px] text-[12px] font-medium text-white no-underline transition-colors duration-200 hover:text-green-200 focus-visible:rounded-[4px] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-green-200 max-md:min-h-[30px] max-md:gap-[6px] max-md:text-[9px] max-[520px]:min-h-[28px] max-[520px]:gap-[5px] max-[520px]:text-[8px] max-[350px]:gap-[3px] max-[350px]:text-[7px]">
+                                        <img src="eServices assets/Usajili wa wageni.png" alt=""
+                                             class="h-[23px] w-[23px] shrink-0 -translate-x-[30px] object-contain max-md:h-[17px] max-md:w-[17px] max-md:translate-x-0 max-[520px]:h-[14px] max-[520px]:w-[14px] max-[350px]:h-[12px] max-[350px]:w-[12px]">
+                                        <span class="min-w-0 -translate-x-[30px] [overflow-wrap:anywhere] max-md:translate-x-0">Usajili wa Wageni</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"
+                                             class="ml-auto h-[17px] w-[17px] shrink-0 -translate-x-[190px] max-md:h-[12px] max-md:w-[12px] max-md:translate-x-0 max-[520px]:h-[10px] max-[520px]:w-[10px] max-[350px]:h-[9px] max-[350px]:w-[9px]">
+                                            <path d="M4 12h16"></path><path d="m14 6 6 6-6 6"></path>
+                                        </svg>
+                                    </a>
+
+                                    <!-- TAX -->
+                                    <a href="#tax"
+                                       class="flex min-h-[34px] min-w-0 items-center gap-[10px] text-[12px] font-medium text-white no-underline transition-colors duration-200 hover:text-green-200 focus-visible:rounded-[4px] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-green-200 max-md:min-h-[30px] max-md:gap-[6px] max-md:text-[9px] max-[520px]:min-h-[28px] max-[520px]:gap-[5px] max-[520px]:text-[8px] max-[350px]:gap-[3px] max-[350px]:text-[7px]">
+                                        <img src="eServices assets/Taarifa za Kodi.png" alt=""
+                                             class="h-[23px] w-[23px] shrink-0 translate-x-[150px] object-contain max-md:h-[17px] max-md:w-[17px] max-md:translate-x-0 max-[520px]:h-[14px] max-[520px]:w-[14px] max-[350px]:h-[12px] max-[350px]:w-[12px]">
+                                        <span class="min-w-0 translate-x-[150px] [overflow-wrap:anywhere] max-md:translate-x-0">Kuwasilisha Taarifa za Kodi</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"
+                                             class="ml-auto h-[17px] w-[17px] shrink-0 -translate-x-[20px] max-md:h-[12px] max-md:w-[12px] max-md:translate-x-0 max-[520px]:h-[10px] max-[520px]:w-[10px] max-[350px]:h-[9px] max-[350px]:w-[9px]">
+                                            <path d="M4 12h16"></path><path d="m14 6 6 6-6 6"></path>
+                                        </svg>
+                                    </a>
+
+                                    <!-- BUSINESS -->
+                                    <a href="#business-registration"
+                                       class="flex min-h-[34px] min-w-0 items-center gap-[10px] text-[12px] font-medium text-white no-underline transition-colors duration-200 hover:text-green-200 focus-visible:rounded-[4px] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-green-200 max-md:min-h-[30px] max-md:gap-[6px] max-md:text-[9px] max-[520px]:min-h-[28px] max-[520px]:gap-[5px] max-[520px]:text-[8px] max-[350px]:gap-[3px] max-[350px]:text-[7px]">
+                                        <img src="eServices assets/Usajili wa Biashara.png" alt=""
+                                             class="h-[23px] w-[23px] shrink-0 -translate-x-[30px] object-contain max-md:h-[17px] max-md:w-[17px] max-md:translate-x-0 max-[520px]:h-[14px] max-[520px]:w-[14px] max-[350px]:h-[12px] max-[350px]:w-[12px]">
+                                        <span class="min-w-0 -translate-x-[30px] [overflow-wrap:anywhere] max-md:translate-x-0">Sajili Biashara</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"
+                                             class="ml-auto h-[17px] w-[17px] shrink-0 -translate-x-[190px] max-md:h-[12px] max-md:w-[12px] max-md:translate-x-0 max-[520px]:h-[10px] max-[520px]:w-[10px] max-[350px]:h-[9px] max-[350px]:w-[9px]">
+                                            <path d="M4 12h16"></path><path d="m14 6 6 6-6 6"></path>
+                                        </svg>
+                                    </a>
+
+                                    <!-- BIRTH CERTIFICATE -->
+                                    <a href="#birth-certificate"
+                                       class="flex min-h-[34px] min-w-0 items-center gap-[10px] text-[12px] font-medium text-white no-underline transition-colors duration-200 hover:text-green-200 focus-visible:rounded-[4px] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-green-200 max-md:min-h-[30px] max-md:gap-[6px] max-md:text-[9px] max-[520px]:min-h-[28px] max-[520px]:gap-[5px] max-[520px]:text-[8px] max-[350px]:gap-[3px] max-[350px]:text-[7px]">
+                                        <img src="eServices assets/Cheti cha kuzaliwa.png" alt=""
+                                             class="h-[23px] w-[23px] shrink-0 translate-x-[150px] object-contain max-md:h-[17px] max-md:w-[17px] max-md:translate-x-0 max-[520px]:h-[14px] max-[520px]:w-[14px] max-[350px]:h-[12px] max-[350px]:w-[12px]">
+                                        <span class="min-w-0 translate-x-[150px] [overflow-wrap:anywhere] max-md:translate-x-0">Cheti Cha Kuzaliwa</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"
+                                             class="ml-auto h-[17px] w-[17px] shrink-0 -translate-x-[20px] max-md:h-[12px] max-md:w-[12px] max-md:translate-x-0 max-[520px]:h-[10px] max-[520px]:w-[10px] max-[350px]:h-[9px] max-[350px]:w-[9px]">
+                                            <path d="M4 12h16"></path><path d="m14 6 6 6-6 6"></path>
+                                        </svg>
+                                    </a>
+
+                                    <!-- OTHER SERVICES -->
+                                    <a href="#other-services"
+                                       class="flex min-h-[34px] min-w-0 items-center gap-[10px] text-[12px] font-medium text-white no-underline transition-colors duration-200 hover:text-green-200 focus-visible:rounded-[4px] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-green-200 max-md:min-h-[30px] max-md:gap-[6px] max-md:text-[9px] max-[520px]:min-h-[28px] max-[520px]:gap-[5px] max-[520px]:text-[8px] max-[350px]:gap-[3px] max-[350px]:text-[7px]">
+                                        <img src="eServices assets/Huduma Zingine.png" alt=""
+                                             class="h-[23px] w-[23px] shrink-0 -translate-x-[30px] object-contain max-md:h-[17px] max-md:w-[17px] max-md:translate-x-0 max-[520px]:h-[14px] max-[520px]:w-[14px] max-[350px]:h-[12px] max-[350px]:w-[12px]">
+                                        <span class="min-w-0 -translate-x-[30px] [overflow-wrap:anywhere] max-md:translate-x-0">Huduma Zingine</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"
+                                             class="ml-auto h-[17px] w-[17px] shrink-0 -translate-x-[190px] max-md:h-[12px] max-md:w-[12px] max-md:translate-x-0 max-[520px]:h-[10px] max-[520px]:w-[10px] max-[350px]:h-[9px] max-[350px]:w-[9px]">
+                                            <path d="M4 12h16"></path><path d="m14 6 6 6-6 6"></path>
+                                        </svg>
+                                    </a>
+
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <!-- =====================================================
+         ECITIZEN / STATISTICS
+    ====================================================== -->
+
+    <section id="jiandikishe" class="relative min-h-[155px] w-full overflow-hidden sm:min-h-[170px] md:min-h-[185px]">
+        <img src="eServices assets/FRAME BACKGROUND.png" alt="" aria-hidden="true"
+             class="absolute inset-0 h-full w-full object-cover object-center">
+
+        <div class="relative z-10 flex min-h-[155px] flex-col items-center sm:min-h-[170px] md:min-h-[185px]">
+            <div class="flex flex-col items-center pt-[12px] sm:pt-[15px] md:pt-[18px]">
+                <p class="text-[9px] font-semibold text-[#1749B8] sm:text-[10px] md:text-[12px]">
+                    Anza Kutumia eCitizen Leo
+                </p>
+
+                <div class="mt-[5px] flex items-center gap-2">
+                    <a href="#ingia" class="inline-flex h-[22px] items-center justify-center rounded-full bg-white px-3 text-[8px] font-semibold text-gray-700 shadow-sm">
+                        Ingia
+                    </a>
+                    <a href="#register" class="inline-flex h-[22px] items-center justify-center rounded-full bg-[#16B957] px-3 text-[8px] font-semibold text-white shadow-sm">
+                        Jiandikishe
+                    </a>
+                </div>
+            </div>
+
+            <div class="mt-[10px] flex h-[2px] w-[82%] max-w-[1150px] sm:mt-[12px] md:w-[80%]">
+                <div class="w-[75%] bg-[#2854C5]"></div>
+                <div class="w-[12.5%] bg-black"></div>
+                <div class="w-[12.5%] bg-green-500"></div>
+            </div>
+
+            <div class="mt-[10px] grid w-[90%] max-w-[1150px] grid-cols-3 text-center sm:mt-[12px] sm:w-[84%] md:w-[80%]">
+                <div>
+                    <p class="text-[7px] font-semibold text-[#1749B8] sm:text-[9px] md:text-[10px]">Huduma Za Serikali</p>
+                    <p class="mt-1 text-[20px] font-medium leading-none text-[#2854C5] sm:text-[24px] md:text-[28px]">120+</p>
+                </div>
+                <div>
+                    <p class="text-[7px] font-semibold text-[#1749B8] sm:text-[9px] md:text-[10px]">Wizara Za Serikali</p>
+                    <p class="mt-1 text-[20px] font-medium leading-none text-[#2854C5] sm:text-[24px] md:text-[28px]">30+</p>
+                </div>
+                <div>
+                    <p class="text-[7px] font-semibold text-[#1749B8] sm:text-[9px] md:text-[10px]">Wananchi Waliohudumiwa</p>
+                    <p class="mt-1 text-[20px] font-medium leading-none text-[#2854C5] sm:text-[24px] md:text-[28px]">1M+</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =====================================================
+         AINA ZA HUDUMA
+    ====================================================== -->
+
+    <section id="aina-za-huduma" class="w-full bg-white py-6 sm:py-8 md:py-10">
+        <div class="mx-auto w-[88%] max-w-[1020px] sm:w-[85%] md:w-[80%]">
+            <h2 class="text-[12px] font-semibold text-gray-900 sm:text-[15px] md:text-[18px]">
+                Aina Za Huduma
+            </h2>
+
+            <div class="mt-3 grid grid-cols-3 gap-3 sm:gap-6 md:gap-[35px]">
+                <div class="relative min-h-[145px] sm:min-h-[160px]">
+                    <div class="absolute left-0 top-0 text-[45px] font-semibold leading-none text-yellow-100 sm:text-[60px] md:text-[68px]">01</div>
+                    <div class="relative z-10 ml-4 pt-7 sm:ml-7 sm:pt-8">
+                        <h3 class="inline-block border-b border-gray-800 pb-1 text-[8px] font-semibold text-gray-900 sm:text-[10px] md:text-[13px]">Huduma kwa Wananchi</h3>
+                        <ul class="mt-2 list-disc pl-3 text-[7px] leading-[1.7] text-gray-600 sm:pl-4 sm:text-[9px] md:text-[10px]">
+                            <li><a href="#vitambulisho" class="underline">Vitambulisho</a></li>
+                            <li><a href="#kodi" class="underline">Kodi</a></li>
+                            <li><a href="#afya" class="underline">Afya</a></li>
+                            <li><a href="#uhamiaji" class="underline">Uhamiaji</a></li>
+                            <li><a href="#vyeti" class="underline">Vyeti</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="relative min-h-[145px] sm:min-h-[160px]">
+                    <div class="absolute left-0 top-0 text-[45px] font-semibold leading-none text-yellow-100 sm:text-[60px] md:text-[68px]">02</div>
+                    <div class="relative z-10 ml-4 pt-7 sm:ml-7 sm:pt-8">
+                        <h3 class="inline-block border-b border-gray-800 pb-1 text-[8px] font-semibold text-gray-900 sm:text-[10px] md:text-[13px]">Huduma kwa Biashara</h3>
+                        <ul class="mt-2 list-disc pl-3 text-[7px] leading-[1.7] text-gray-600 sm:pl-4 sm:text-[9px] md:text-[10px]">
+                            <li><a href="#brela" class="underline">BRELA</a></li>
+                            <li><a href="#tra" class="underline">TRA</a></li>
+                            <li><a href="#vibali" class="underline">Vibali</a></li>
+                            <li><a href="#fraodha" class="underline">Frodha</a></li>
+                            <li><a href="#leseni" class="underline">Leseni</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="relative min-h-[145px] sm:min-h-[160px]">
+                    <div class="absolute left-0 top-0 text-[45px] font-semibold leading-none text-yellow-100 sm:text-[60px] md:text-[68px]">03</div>
+                    <div class="relative z-10 ml-4 pt-7 sm:ml-7 sm:pt-8">
+                        <h3 class="inline-block border-b border-gray-800 pb-1 text-[8px] font-semibold text-gray-900 sm:text-[10px] md:text-[13px]">Huduma kwa Wageni</h3>
+                        <ul class="mt-2 list-disc pl-3 text-[7px] leading-[1.7] text-gray-600 sm:pl-4 sm:text-[9px] md:text-[10px]">
+                            <li><a href="#visa" class="underline">Visa</a></li>
+                            <li><a href="#vibali-wageni" class="underline">Vibali</a></li>
+                            <li><a href="#maombi-uwekezaji" class="underline">Maombi ya uwekezaji</a></li>
+                            <li><a href="#vibali-utalii" class="underline">Vibali vya utalii</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =====================================================
+         WIZARA
+    ====================================================== -->
+
+    <section id="wizara" class="w-full bg-white pb-8 sm:pb-10 md:pb-12">
+        <div class="mx-auto w-[88%] max-w-[1020px] sm:w-[85%] md:w-[80%]">
+            <div class="mb-3 flex items-center justify-between">
+                <h2 class="text-[12px] font-semibold sm:text-[15px] md:text-[18px]">Wizara</h2>
+                <a href="#all-ministries" class="text-[8px] text-blue-600 transition hover:text-blue-800 sm:text-[10px] md:text-[11px]">
+                    Ona Zote
+                </a>
+            </div>
+
+            <div class="grid grid-cols-2 gap-2 sm:gap-3 lg:grid-cols-3">
+                <a href="#nida" class="group flex min-h-[52px] min-w-0 items-center border border-gray-200 bg-white px-2 transition-all duration-300 hover:-translate-y-[3px] hover:border-gray-300 hover:shadow-[0_8px_20px_rgba(0,0,0,0.10)] sm:min-h-[65px] sm:px-3 md:min-h-[72px]">
+                    <img src="eServices assets/NIDA.png" alt="NIDA" class="h-[27px] w-[27px] shrink-0 object-contain transition-transform duration-300 group-hover:scale-105 sm:h-[38px] sm:w-[38px]">
+                    <span class="ml-2 min-w-0 break-words text-[6px] leading-[1.4] text-gray-600 transition-colors group-hover:text-gray-900 sm:text-[9px] md:text-[10px]">National Identification Authority (NIDA)</span>
+                </a>
+
+                <a href="#brela" class="group flex min-h-[52px] min-w-0 items-center border border-gray-200 bg-white px-2 transition-all duration-300 hover:-translate-y-[3px] hover:border-gray-300 hover:shadow-[0_8px_20px_rgba(0,0,0,0.10)] sm:min-h-[65px] sm:px-3 md:min-h-[72px]">
+                    <img src="eServices assets/BRELA.png" alt="BRELA" class="h-[27px] w-[36px] shrink-0 object-contain transition-transform duration-300 group-hover:scale-105 sm:h-[38px] sm:w-[52px]">
+                    <span class="ml-2 min-w-0 break-words text-[6px] leading-[1.4] text-gray-600 transition-colors group-hover:text-gray-900 sm:text-[9px] md:text-[10px]">Business Registrations and Licensing Agency (BRELA)</span>
+                </a>
+
+                <a href="#tra" class="group flex min-h-[52px] min-w-0 items-center border border-gray-200 bg-white px-2 transition-all duration-300 hover:-translate-y-[3px] hover:border-gray-300 hover:shadow-[0_8px_20px_rgba(0,0,0,0.10)] sm:min-h-[65px] sm:px-3 md:min-h-[72px]">
+                    <img src="eServices assets/Tanzania Revenue Authority.png" alt="TRA" class="h-[27px] w-[27px] shrink-0 object-contain transition-transform duration-300 group-hover:scale-105 sm:h-[38px] sm:w-[38px]">
+                    <span class="ml-2 min-w-0 break-words text-[6px] leading-[1.4] text-gray-600 transition-colors group-hover:text-gray-900 sm:text-[9px] md:text-[10px]">Tanzania Revenue Authority (TRA)</span>
+                </a>
+
+                <a href="#immigration" class="group flex min-h-[52px] min-w-0 items-center border border-gray-200 bg-white px-2 transition-all duration-300 hover:-translate-y-[3px] hover:border-gray-300 hover:shadow-[0_8px_20px_rgba(0,0,0,0.10)] sm:min-h-[65px] sm:px-3 md:min-h-[72px]">
+                    <img src="eServices assets/Immigration service department.png" alt="Immigration Services" class="h-[27px] w-[27px] shrink-0 object-contain transition-transform duration-300 group-hover:scale-105 sm:h-[38px] sm:w-[38px]">
+                    <span class="ml-2 min-w-0 break-words text-[6px] leading-[1.4] text-gray-600 transition-colors group-hover:text-gray-900 sm:text-[9px] md:text-[10px]">Immigration Services Department</span>
+                </a>
+
+                <a href="#rita" class="group flex min-h-[52px] min-w-0 items-center border border-gray-200 bg-white px-2 transition-all duration-300 hover:-translate-y-[3px] hover:border-gray-300 hover:shadow-[0_8px_20px_rgba(0,0,0,0.10)] sm:min-h-[65px] sm:px-3 md:min-h-[72px]">
+                    <img src="eServices assets/RITA.png" alt="RITA" class="h-[27px] w-[27px] shrink-0 object-contain transition-transform duration-300 group-hover:scale-105 sm:h-[38px] sm:w-[38px]">
+                    <span class="ml-2 min-w-0 break-words text-[6px] leading-[1.4] text-gray-600 transition-colors group-hover:text-gray-900 sm:text-[9px] md:text-[10px]">Registration Insolvency and Trusteeship Agency (RITA)</span>
+                </a>
+
+                <a href="#nhif" class="group flex min-h-[52px] min-w-0 items-center border border-gray-200 bg-white px-2 transition-all duration-300 hover:-translate-y-[3px] hover:border-gray-300 hover:shadow-[0_8px_20px_rgba(0,0,0,0.10)] sm:min-h-[65px] sm:px-3 md:min-h-[72px]">
+                    <img src="eServices assets/NHIF.png" alt="NHIF" class="h-[27px] w-[27px] shrink-0 object-contain transition-transform duration-300 group-hover:scale-105 sm:h-[38px] sm:w-[38px]">
+                    <span class="ml-2 min-w-0 break-words text-[6px] leading-[1.4] text-gray-600 transition-colors group-hover:text-gray-900 sm:text-[9px] md:text-[10px]">National Health Insurance Fund (NHIF)</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- =====================================================
+         HUDUMA ZOTE ZA SERIKALI SEHEMU MOJA
+    ====================================================== -->
+
+    <section
+        id="service-steps"
+        class="w-full bg-[#EEF1F3] pb-[54px] pt-[58px]
+               max-md:pb-[38px] max-md:pt-[40px]
+               max-[520px]:pb-[30px] max-[520px]:pt-[32px]"
+    >
+        <div class="mx-auto w-[min(990px,calc(100%-48px))] max-[520px]:w-[calc(100%-32px)]">
+
+            <h2
+                class="text-[20px] font-bold leading-tight
+                       tracking-[-0.04em] text-[#343434]
+                       sm:text-[24px] md:text-[25px]"
+            >
+                Huduma Zote Za Serikali Sehemu
+                <span class="text-[#FFC928]">Moja</span>
+            </h2>
+
+            <p
+                class="mt-[7px] max-w-[1000px]
+                       text-[11px] leading-[1.7] text-[#454545]
+                       sm:text-[12px] md:text-[13px]"
+            >
+                Furahia urahisi wa huduma, pata taarifa kuhusu huduma za serikali mtandaoni
+                na fanya maombi kwa haraka na kwa urahisi kwa hatua nne tu.
+            </p>
+
+            <!-- FOUR SERVICE STEPS -->
+            <div
+                class="mt-[19px] grid grid-cols-2 gap-x-5 gap-y-7
+                       sm:mt-[21px] sm:grid-cols-4 sm:gap-x-5 sm:gap-y-0
+                       md:mt-[21px] md:gap-x-[35px]"
+            >
+
+                <a
+                    id="step-register"
+                    href="#register"
+                    class="group flex min-w-0 flex-col items-start
+                           rounded-sm text-left text-[#343434]
+                           focus-visible:rounded-[4px] focus-visible:outline focus-visible:outline-2
+                           focus-visible:outline-offset-[5px] focus-visible:outline-blue-600"
+                    aria-label="Jiandikishe: Fungua akaunti kwa namba ya Kitambulisho au pasipoti yako"
+                >
+                    <img
+                        src="eServices assets/Jiandikishe.png"
+                        alt="Ikoni ya kujiandikisha"
+                        class="h-[36px] w-[36px] object-contain transition-transform duration-[250ms] ease-[ease]
+                               group-hover:-translate-y-[3px]
+                               max-md:h-[31px] max-md:w-[31px]
+                               max-[520px]:h-[27px] max-[520px]:w-[27px]"
+                    >
+
+                    <div class="mt-[17px]">
+                        <h3 class="text-[12px] font-bold leading-tight sm:text-[12px] md:text-[13px]">
+                            Jiandikishe
+                        </h3>
+
+                        <p class="mt-[9px] max-w-[220px] text-[10px] leading-[1.7]
+                                  text-[#4B4B4B] sm:text-[11px] md:text-[12px]">
+                            Fungua akaunti kwa namba ya Kitambulisho au pasipoti yako
+                        </p>
+                    </div>
+                </a>
+
+                <a
+                    id="step-choose-service"
+                    href="#huduma-maarufu"
+                    class="group flex min-w-0 flex-col items-start
+                           rounded-sm text-left text-[#343434]
+                           focus-visible:rounded-[4px] focus-visible:outline focus-visible:out
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Tanzania eServices</title>
+
+    <!-- PLUS JAKARTA SANS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- TAILWIND CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        jakarta: ['Plus Jakarta Sans', 'sans-serif']
+                    }
+                }
+            }
+        };
+    </script>
+
+    <!-- ALPINE JS -->
+    <script
+        defer
+        src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+
+    <style>
+        :root {
+            /* HERO AND POPULAR SECTION */
+            --popular-y: -9px;
+
+            --popular-bg-width: 1004px;
+            --popular-bg-height: 200px;
+            --popular-bg-x: 0px;
+            --popular-bg-y: 2px;
+
+            --popular-bg-top-opacity: 0.09;
+            --popular-bg-center-opacity: 0.00;
+            --popular-bg-bottom-opacity: 0.03;
+
+            --popular-bg-shadow: 0 0 0 rgba(0, 0, 0, 0);
+            --popular-bg-radius: 0px;
+
+            --popular-title-x: -10px;
+            --popular-title-y: 0px;
+
+            /* PASSPORT */
+            --passport-icon-x: 150px;
+            --passport-icon-y: 0px;
+            --passport-text-x: 150px;
+            --passport-text-y: 0px;
+            --passport-arrow-x: -20px;
+            --passport-arrow-y: 0px;
+
+            /* HEALTH INSURANCE */
+            --health-icon-x: -30px;
+            --health-icon-y: 0px;
+            --health-text-x: -30px;
+            --health-text-y: 0px;
+            --health-arrow-x: -190px;
+            --health-arrow-y: 0px;
+
+            /* DRIVING LICENSE */
+            --driving-icon-x: 150px;
+            --driving-icon-y: 0px;
+            --driving-text-x: 150px;
+            --driving-text-y: 0px;
+            --driving-arrow-x: -20px;
+            --driving-arrow-y: 0px;
+
+            /* VISITORS */
+            --visitors-icon-x: -30px;
+            --visitors-icon-y: 0px;
+            --visitors-text-x: -30px;
+            --visitors-text-y: 0px;
+            --visitors-arrow-x: -190px;
+            --visitors-arrow-y: 0px;
+
+            /* TAX */
+            --tax-icon-x: 150px;
+            --tax-icon-y: 0px;
+            --tax-text-x: 150px;
+            --tax-text-y: 0px;
+            --tax-arrow-x: -20px;
+            --tax-arrow-y: 0px;
+
+            /* BUSINESS */
+            --business-icon-x: -30px;
+            --business-icon-y: 0px;
+            --business-text-x: -30px;
+            --business-text-y: 0px;
+            --business-arrow-x: -190px;
+            --business-arrow-y: 0px;
+
+            /* BIRTH CERTIFICATE */
+            --birth-icon-x: 150px;
+            --birth-icon-y: 0px;
+            --birth-text-x: 150px;
+            --birth-text-y: 0px;
+            --birth-arrow-x: -20px;
+            --birth-arrow-y: 0px;
+
+            /* OTHER SERVICES */
+            --other-icon-x: -30px;
+            --other-icon-y: 0px;
+            --other-text-x: -30px;
+            --other-text-y: 0px;
+            --other-arrow-x: -190px;
+            --other-arrow-y: 0px;
+
+            /* ECITIZEN AND SEARCH */
+            --ecitizen-y: 0px;
+            --search-icon-x: 260px;
+
+            /* FOUR SERVICE STEPS */
+            --steps-section-padding-top: 58px;
+            --steps-section-padding-bottom: 54px;
+            --steps-content-width: 990px;
+            --steps-title-x: 0px;
+            --steps-title-y: 0px;
+            --steps-description-x: 0px;
+            --steps-description-y: 0px;
+            --steps-icons-y: 0px;
+            --steps-text-y: 0px;
+            --steps-icon-size: 36px;
+
+            /* FINAL BLACK FOOTER CONTROLS */
+            --footer-bg: #000000;
+            --footer-text: #f5f5f5;
+            --footer-muted: #a8adb7;
+            --footer-content-width: 990px;
+            --footer-padding-top: 48px;
+            --footer-padding-bottom: 28px;
+            --footer-logo-size: 28px;
+            --footer-social-size: 19px;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        [x-cloak] {
+            display: none !important;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 16px;
+        }
+
+        body {
+            margin: 0;
+            min-width: 0;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        img,
+        svg {
+            max-width: 100%;
+        }
+
+        a {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* HERO BACKGROUND */
+        .hero-background {
+            background-image: url("eServices assets/Background image.png");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        /* POPULAR SECTION POSITION */
+        .popular-position {
+            margin-left: auto;
+            margin-right: auto;
+            transform: translateY(var(--popular-y));
+            transition: transform 0.25s ease;
+        }
+
+        .popular-background {
+            position: absolute;
+            z-index: 0;
+            top: 0;
+            left: 50%;
+            width: min(var(--popular-bg-width), 100%);
+            height: var(--popular-bg-height);
+            transform: translate(
+                calc(-50% + var(--popular-bg-x)),
+                var(--popular-bg-y)
+            );
+            background: linear-gradient(
+                to bottom,
+                rgba(0, 0, 0, var(--popular-bg-top-opacity)) 2%,
+                rgba(0, 0, 0, var(--popular-bg-center-opacity)) 45%,
+                rgba(0, 0, 0, var(--popular-bg-bottom-opacity)) 100%
+            );
+            border-radius: var(--popular-bg-radius);
+            box-shadow: var(--popular-bg-shadow);
+            pointer-events: none;
+            transition: all 0.25s ease;
+        }
+
+        .popular-title-position {
+            transform: translate(
+                var(--popular-title-x),
+                var(--popular-title-y)
+            );
+        }
+
+        /* INDIVIDUAL SERVICE POSITION CONTROLS */
+        .passport-icon { transform: translate(var(--passport-icon-x), var(--passport-icon-y)); }
+        .passport-text { transform: translate(var(--passport-text-x), var(--passport-text-y)); }
+        .passport-arrow { transform: translate(var(--passport-arrow-x), var(--passport-arrow-y)); }
+
+        .health-icon { transform: translate(var(--health-icon-x), var(--health-icon-y)); }
+        .health-text { transform: translate(var(--health-text-x), var(--health-text-y)); }
+        .health-arrow { transform: translate(var(--health-arrow-x), var(--health-arrow-y)); }
+
+        .driving-icon { transform: translate(var(--driving-icon-x), var(--driving-icon-y)); }
+        .driving-text { transform: translate(var(--driving-text-x), var(--driving-text-y)); }
+        .driving-arrow { transform: translate(var(--driving-arrow-x), var(--driving-arrow-y)); }
+
+        .visitors-icon { transform: translate(var(--visitors-icon-x), var(--visitors-icon-y)); }
+        .visitors-text { transform: translate(var(--visitors-text-x), var(--visitors-text-y)); }
+        .visitors-arrow { transform: translate(var(--visitors-arrow-x), var(--visitors-arrow-y)); }
+
+        .tax-icon { transform: translate(var(--tax-icon-x), var(--tax-icon-y)); }
+        .tax-text { transform: translate(var(--tax-text-x), var(--tax-text-y)); }
+        .tax-arrow { transform: translate(var(--tax-arrow-x), var(--tax-arrow-y)); }
+
+        .business-icon { transform: translate(var(--business-icon-x), var(--business-icon-y)); }
+        .business-text { transform: translate(var(--business-text-x), var(--business-text-y)); }
+        .business-arrow { transform: translate(var(--business-arrow-x), var(--business-arrow-y)); }
+
+        .birth-icon { transform: translate(var(--birth-icon-x), var(--birth-icon-y)); }
+        .birth-text { transform: translate(var(--birth-text-x), var(--birth-text-y)); }
+        .birth-arrow { transform: translate(var(--birth-arrow-x), var(--birth-arrow-y)); }
+
+        .other-icon { transform: translate(var(--other-icon-x), var(--other-icon-y)); }
+        .other-text { transform: translate(var(--other-text-x), var(--other-text-y)); }
+        .other-arrow { transform: translate(var(--other-arrow-x), var(--other-arrow-y)); }
+
+        .ecitizen-position {
+            transform: translateY(var(--ecitizen-y));
+        }
+
+        .search-icon-position {
+            transform: translateX(var(--search-icon-x));
+        }
+
+        /* POPULAR SERVICE LINKS */
+        .popular-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            min-width: 0;
+            min-height: 34px;
+            color: white;
+            font-size: 12px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .popular-link:hover {
+            color: #bbf7d0;
+        }
+
+        .popular-link:focus-visible {
+            outline: 2px solid #bbf7d0;
+            outline-offset: 3px;
+            border-radius: 4px;
+        }
+
+        .popular-link > span {
+            min-width: 0;
+            overflow-wrap: anywhere;
+        }
+
+        .popular-link img {
+            flex-shrink: 0;
+            width: 23px;
+            height: 23px;
+            object-fit: contain;
+        }
+
+        .popular-link svg {
+            flex-shrink: 0;
+            width: 17px;
+            height: 17px;
+            margin-left: auto;
+        }
+
+        /* FOUR SERVICE STEPS */
+        .service-steps-section {
+            padding-top: var(--steps-section-padding-top);
+            padding-bottom: var(--steps-section-padding-bottom);
+        }
+
+        .service-steps-content {
+            width: min(var(--steps-content-width), calc(100% - 48px));
+            margin-inline: auto;
+        }
+
+        .service-steps-title {
+            transform: translate(var(--steps-title-x), var(--steps-title-y));
+        }
+
+        .service-steps-description {
+            transform: translate(
+                var(--steps-description-x),
+                var(--steps-description-y)
+            );
+        }
+
+        .service-step-icon {
+            width: var(--steps-icon-size);
+            height: var(--steps-icon-size);
+            object-fit: contain;
+            transform: translateY(var(--steps-icons-y));
+            transition: transform 0.25s ease;
+        }
+
+        .service-step-link:hover .service-step-icon {
+            transform: translateY(calc(var(--steps-icons-y) - 3px));
+        }
+
+        .service-step-text {
+            transform: translateY(var(--steps-text-y));
+        }
+
+        .service-step-link:focus-visible {
+            outline: 2px solid #2563eb;
+            outline-offset: 5px;
+            border-radius: 4px;
+        }
+
+        /* =================================================
+           FINAL BLACK FOOTER
+        ================================================= */
+
+        .final-footer {
+            width: 100%;
+            background: var(--footer-bg);
+            color: var(--footer-text);
+            padding: var(--footer-padding-top) 0
+                     var(--footer-padding-bottom);
+        }
+
+        .final-footer-content {
+            width: min(
+                var(--footer-content-width),
+                calc(100% - 48px)
+            );
+            margin-inline: auto;
+        }
+
+        .footer-main {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto;
+            align-items: start;
+            gap: 35px;
+        }
+
+        .footer-brand {
+            min-width: 0;
+        }
+
+        .footer-brand-tagline {
+            margin: 0;
+            color: #d0d0d0;
+            font-size: 8px;
+            font-weight: 400;
+            line-height: 1.5;
+        }
+
+        .footer-logo-text {
+            display: inline-block;
+            margin-top: 1px;
+            color: #f8f8f8;
+            font-size: var(--footer-logo-size);
+            font-weight: 600;
+            line-height: 1.15;
+            letter-spacing: -1.2px;
+            text-decoration: none;
+        }
+
+        .footer-description {
+            max-width: 300px;
+            margin-top: 24px;
+            color: #c7c7c7;
+            font-size: 12px;
+            line-height: 1.65;
+        }
+
+        .footer-navigation {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 12px 27px;
+            margin-top: 25px;
+        }
+
+        .footer-navigation a {
+            color: #e4e4e4;
+            font-size: 12px;
+            font-weight: 600;
+            line-height: 1.6;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .footer-navigation a:hover {
+            color: #a3a3a3;
+        }
+
+        .footer-navigation a:focus-visible,
+        .footer-social a:focus-visible,
+        .app-store-badge:focus-visible {
+            outline: 2px solid #ffffff;
+            outline-offset: 4px;
+            border-radius: 3px;
+        }
+
+        /* APP DOWNLOADS */
+        .footer-apps {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            min-width: 105px;
+        }
+
+        .footer-apps-title {
+            margin: 0 0 12px;
+            color: #f5f5f5;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .app-store-badge {
+            display: flex;
+            width: 106px;
+            height: 33px;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 6px;
+            padding: 4px 7px;
+            border: 1px solid #b7b7b7;
+            border-radius: 6px;
+            background: #000000;
+            color: #ffffff;
+            text-decoration: none;
+            transition: background 0.2s ease, border-color 0.2s ease;
+        }
+
+        .app-store-badge:hover {
+            background: #202020;
+            border-color: #ffffff;
+        }
+
+        .app-store-badge + .app-store-badge {
+            margin-top: 10px;
+        }
+
+        .app-store-badge svg {
+            width: 19px;
+            height: 21px;
+            flex-shrink: 0;
+        }
+
+        .app-store-badge .badge-copy {
+            display: flex;
+            min-width: 0;
+            flex-direction: column;
+            justify-content: center;
+            line-height: 1.05;
+        }
+
+        .badge-small {
+            font-size: 6px;
+            font-weight: 400;
+            white-space: nowrap;
+        }
+
+        .badge-large {
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: -0.3px;
+            white-space: nowrap;
+        }
+
+        /* FOOTER DIVIDER */
+        .footer-divider {
+            width: 100%;
+            height: 1px;
+            margin-top: 47px;
+            border: 0;
+            background: #374151;
+        }
+
+        /* FOOTER BOTTOM */
+        .footer-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            padding-top: 22px;
+        }
+
+        .footer-copyright {
+            margin: 0;
+            color: var(--footer-muted);
+            font-size: 12px;
+            font-weight: 400;
+            line-height: 1.7;
+        }
+
+        .footer-social {
+            display: flex;
+            flex-shrink: 0;
+            align-items: center;
+            gap: 17px;
+        }
+
+        .footer-social a {
+            display: inline-flex;
+            width: var(--footer-social-size);
+            height: var(--footer-social-size);
+            align-items: center;
+            justify-content: center;
+            color: #a5adbb;
+            text-decoration: none;
+            transition: color 0.2s ease, transform 0.2s ease;
+        }
+
+        .footer-social a:hover {
+            color: #ffffff;
+            transform: translateY(-2px);
+        }
+
+        .footer-social svg {
+            display: block;
+            width: 100%;
+            height: 100%;
+            fill: currentColor;
+        }
+
+        /* TABLETS */
+        @media (max-width: 767px) {
+            :root {
+                --popular-bg-width: 100%;
+                --popular-bg-height: 155px;
+                --popular-bg-x: 0px;
+                --popular-title-x: 0px;
+
+                --passport-icon-x: 0px;
+                --passport-text-x: 0px;
+                --passport-arrow-x: 0px;
+
+                --health-icon-x: 0px;
+                --health-text-x: 0px;
+                --health-arrow-x: 0px;
+
+                --driving-icon-x: 0px;
+                --driving-text-x: 0px;
+                --driving-arrow-x: 0px;
+
+                --visitors-icon-x: 0px;
+                --visitors-text-x: 0px;
+                --visitors-arrow-x: 0px;
+
+                --tax-icon-x: 0px;
+                --tax-text-x: 0px;
+                --tax-arrow-x: 0px;
+
+                --business-icon-x: 0px;
+                --business-text-x: 0px;
+                --business-arrow-x: 0px;
+
+                --birth-icon-x: 0px;
+                --birth-text-x: 0px;
+                --birth-arrow-x: 0px;
+
+                --other-icon-x: 0px;
+                --other-text-x: 0px;
+                --other-arrow-x: 0px;
+
+                --search-icon-x: 0px;
+                --steps-section-padding-top: 40px;
+                --steps-section-padding-bottom: 38px;
+                --steps-icon-size: 31px;
+                --footer-padding-top: 38px;
+                --footer-padding-bottom: 25px;
+                --footer-logo-size: 26px;
+                --footer-social-size: 18px;
+            }
+
+            .popular-link {
+                gap: 6px;
+                min-height: 30px;
+                font-size: 9px;
+            }
+
+            .popular-link img {
+                width: 17px;
+                height: 17px;
+            }
+
+            .popular-link svg {
+                width: 12px;
+                height: 12px;
+            }
+
+            .search-icon-position {
+                transform: none;
+            }
+
+            .final-footer-content {
+                width: calc(100% - 40px);
+            }
+
+            .footer-main {
+                gap: 24px;
+            }
+
+            .footer-navigation {
+                gap: 10px 19px;
+                margin-top: 23px;
+            }
+
+            .footer-navigation a {
+                font-size: 11px;
+            }
+
+            .footer-description {
+                font-size: 11px;
+            }
+
+            .footer-divider {
+                margin-top: 35px;
+            }
+
+            .footer-bottom {
+                padding-top: 19px;
+            }
+
+            .footer-copyright {
+                font-size: 10px;
+            }
+
+            .footer-social {
+                gap: 12px;
+            }
+        }
+
+        /* MOBILE */
+        @media (max-width: 520px) {
+            :root {
+                --popular-bg-height: 150px;
+                --steps-section-padding-top: 32px;
+                --steps-section-padding-bottom: 30px;
+                --steps-icon-size: 27px;
+                --footer-padding-top: 34px;
+                --footer-padding-bottom: 23px;
+                --footer-logo-size: 25px;
+                --footer-social-size: 18px;
+            }
+
+            .popular-link {
+                gap: 5px;
+                min-height: 28px;
+                font-size: 8px;
+            }
+
+            .popular-link img {
+                width: 14px;
+                height: 14px;
+            }
+
+            .popular-link svg {
+                width: 10px;
+                height: 10px;
+            }
+
+            .service-steps-content {
+                width: calc(100% - 32px);
+            }
+
+            .final-footer-content {
+                width: calc(100% - 40px);
+            }
+
+            .footer-main {
+                grid-template-columns: minmax(0, 1fr);
+                gap: 27px;
+            }
+
+            .footer-apps {
+                align-items: flex-start;
+            }
+
+            .footer-apps-title {
+                margin-bottom: 10px;
+            }
+
+            .footer-navigation {
+                gap: 12px 20px;
+                margin-top: 23px;
+            }
+
+            .footer-divider {
+                margin-top: 29px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 17px;
+                padding-top: 17px;
+            }
+
+            .footer-copyright {
+                font-size: 10px;
+            }
+
+            .footer-social {
+                gap: 17px;
+            }
+        }
+
+        @media (max-width: 350px) {
+            .popular-link {
+                gap: 3px;
+                font-size: 7px;
+            }
+
+            .popular-link img {
+                width: 12px;
+                height: 12px;
+            }
+
+            .popular-link svg {
+                width: 9px;
+                height: 9px;
+            }
+
+            .footer-navigation {
+                gap: 10px 15px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                scroll-behavior: auto !important;
+                transition-duration: 0.01ms !important;
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+            }
+        }
+    </style>
+</head>
+
+<body
+    x-data="{
+        english: false,
+        mobileMenu: false,
+        searchQuery: ''
+    }"
+    class="min-w-0 overflow-x-hidden bg-white font-jakarta text-gray-900"
+>
+
+    <!-- =====================================================
+         HERO / BACKGROUND
+    ====================================================== -->
+
+    <div
+        id="home"
+        class="hero-background relative min-h-[440px] sm:min-h-[480px] md:min-h-[520px]"
+    >
+        <div class="pointer-events-none absolute inset-0 bg-black/[0.04]"></div>
+
+        <div class="relative z-10">
+
+            <!-- HEADER -->
+            <header class="w-full">
+
+                <!-- TOP UTILITY BAR -->
+                <div
+                    class="relative mx-auto flex h-[30px] w-[94%] max-w-[1280px]
+                           items-center justify-between bg-gray-200 px-3
+                           sm:h-[34px] sm:w-[92%] sm:px-5
+                           md:h-[36px] md:w-[90%] md:px-8 lg:px-10"
+                >
+                    <!-- SOCIAL MEDIA -->
+                    <div class="flex shrink-0 items-center gap-[6px] sm:gap-3">
+                        <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer"
+                           aria-label="Twitter" class="flex h-[13px] w-[13px] items-center justify-center">
+                            <img src="eServices assets/Twitter.png" alt="Twitter" class="h-full w-full object-contain">
+                        </a>
+
+                        <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer"
+                           aria-label="LinkedIn" class="flex h-[13px] w-[13px] items-center justify-center">
+                            <img src="eServices assets/Linkledin.png" alt="LinkedIn" class="h-full w-full object-contain">
+                        </a>
+
+                        <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer"
+                           aria-label="Facebook" class="flex h-[13px] w-[13px] items-center justify-center">
+                            <img src="eServices assets/Facebook.png" alt="Facebook" class="h-full w-full object-contain">
+                        </a>
+
+                        <a href="https://github.com/" target="_blank" rel="noopener noreferrer"
+                           aria-label="GitHub" class="flex h-[13px] w-[13px] items-center justify-center">
+                            <img src="eServices assets/Github.png" alt="GitHub" class="h-full w-full object-contain">
+                        </a>
+                    </div>
+
+                    <!-- ANNOUNCEMENT -->
+                    <p class="absolute left-1/2 hidden -translate-x-1/2 whitespace-nowrap
+                              text-[8px] font-medium text-gray-500 sm:block md:text-[9px] lg:text-[10px]">
+                        Saa za Kufunguliwa kwa Ofisi za Serikali
+                        Jumatatu - Ijumaa, Saa 8:00 Asubuhi - Saa 5:00 Jioni
+                    </p>
+
+                    <!-- LANGUAGE SWITCH -->
+                    <div class="flex shrink-0 items-center gap-1 sm:gap-2">
+                        <span class="whitespace-nowrap text-[8px] font-medium text-gray-600 sm:text-[9px]"
+                              x-text="english ? 'Swahili' : 'English'"></span>
+
+                        <button
+                            type="button"
+                            @click="english = !english"
+                            :aria-checked="english.toString()"
+                            role="switch"
+                            aria-label="Change language"
+                            class="relative flex h-[18px] w-[35px] shrink-0 items-center
+                                   rounded-full border shadow-sm transition-all duration-200
+                                   md:h-[21px] md:w-[42px]"
+                            :class="english ? 'border-green-600 bg-green-500' : 'border-gray-300 bg-white'"
+                        >
+                            <span
+                                class="absolute left-[2px] top-[2px] h-[12px] w-[12px] rounded-full
+                                       bg-white shadow-[0_1px_4px_rgba(0,0,0,0.30)]
+                                       transition-transform duration-200 md:h-[14px] md:w-[14px]"
+                                :class="english ? 'translate-x-[17px] md:translate-x-[21px]' : 'translate-x-0'"
+                            ></span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- MAIN NAVIGATION -->
+                <div class="relative mx-auto w-[94%] max-w-[1280px] sm:w-[92%] md:w-[90%]">
+                    <nav class="relative flex h-[50px] w-full items-center justify-between
+                                bg-white px-3 shadow-sm sm:h-[56px] sm:px-5 md:h-[62px] md:px-7 lg:px-10">
+
+                        <a href="#home" class="flex shrink-0 items-center">
+                            <img
+                                src="eServices assets/eService logo.png"
+                                alt="Tanzania eServices"
+                                class="h-[31px] w-auto max-w-[115px] object-contain
+                                       sm:h-[36px] sm:max-w-[145px] md:h-[42px]
+                                       md:max-w-[165px] lg:h-[46px]"
+                            >
+                        </a>
+
+                        <div class="hidden flex-1 items-center justify-center gap-5 md:flex lg:gap-8">
+                            <a href="#home" class="text-[9px] font-semibold text-gray-700 transition hover:text-green-600 lg:text-[11px]">
+                                Nyumbani
+                            </a>
+                            <a href="#wizara" class="text-[9px] font-medium text-gray-600 transition hover:text-green-600 lg:text-[11px]">
+                                Wizara
+                            </a>
+                            <a href="#msaada" class="text-[9px] font-medium text-gray-600 transition hover:text-green-600 lg:text-[11px]">
+                                Msaada
+                            </a>
+                        </div>
+
+                        <div class="hidden shrink-0 items-center gap-3 md:flex lg:gap-4">
+                            <a href="#ingia" class="text-[9px] font-semibold text-gray-700 lg:text-[11px]">
+                                Ingia
+                            </a>
+                            <a href="#jiandikishe"
+                               class="inline-flex h-[25px] items-center justify-center rounded-full
+                                      bg-green-600 px-3 text-[8px] font-semibold text-white
+                                      lg:h-[30px] lg:px-4 lg:text-[10px]">
+                                Jiandikishe
+                            </a>
+                        </div>
+
+                        <!-- MOBILE MENU BUTTON -->
+                        <button
+                            type="button"
+                            @click="mobileMenu = !mobileMenu"
+                            :aria-expanded="mobileMenu.toString()"
+                            aria-label="Toggle navigation menu"
+                            class="flex h-[30px] w-[30px] items-center justify-center
+                                   rounded border border-gray-200 text-gray-700 md:hidden"
+                        >
+                            <svg x-show="!mobileMenu" xmlns="http://www.w3.org/2000/svg"
+                                 viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                 stroke-width="2" class="h-4 w-4">
+                                <path d="M4 6h16"></path>
+                                <path d="M4 12h16"></path>
+                                <path d="M4 18h16"></path>
+                            </svg>
+
+                            <svg x-cloak x-show="mobileMenu" xmlns="http://www.w3.org/2000/svg"
+                                 viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                 stroke-width="2" class="h-4 w-4">
+                                <path d="M6 6l12 12"></path>
+                                <path d="M18 6L6 18"></path>
+                            </svg>
+                        </button>
+                    </nav>
+
+                    <!-- MOBILE MENU -->
+                    <div
+                        x-cloak
+                        x-show="mobileMenu"
+                        x-transition
+                        @click.outside="mobileMenu = false"
+                        class="absolute left-0 right-0 top-full z-50 bg-white px-4 py-3 shadow-lg md:hidden"
+                    >
+                        <div class="flex flex-col gap-1">
+                            <a href="#home" @click="mobileMenu = false"
+                               class="rounded px-3 py-2 text-xs text-gray-700 hover:bg-gray-50">
+                                Nyumbani
+                            </a>
+                            <a href="#wizara" @click="mobileMenu = false"
+                               class="rounded px-3 py-2 text-xs text-gray-700 hover:bg-gray-50">
+                                Wizara
+                            </a>
+                            <a href="#msaada" @click="mobileMenu = false"
+                               class="rounded px-3 py-2 text-xs text-gray-700 hover:bg-gray-50">
+                                Msaada
+                            </a>
+
+                            <div class="mt-1 border-t border-gray-100 pt-2">
+                                <a href="#ingia" @click="mobileMenu = false"
+                                   class="block rounded-full border border-gray-200 py-2 text-center text-xs">
+                                    Ingia
+                                </a>
+                                <a href="#jiandikishe" @click="mobileMenu = false"
+                                   class="mt-2 block rounded-full bg-green-600 py-2 text-center text-xs text-white">
+                                    Jiandikishe
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- HERO CONTENT -->
+            <main>
+                <section class="flex justify-center px-3 sm:px-5">
+                    <div class="flex w-full max-w-[1080px] flex-col items-center pt-[22px] sm:pt-[28px] md:pt-[42px]">
+
+                        <div class="inline-flex min-h-[22px] items-center justify-center gap-1 rounded-full
+                                    bg-green-100/90 px-3 text-[7px] font-semibold text-green-700
+                                    sm:min-h-[25px] sm:px-4 sm:text-[9px] md:min-h-[27px] md:text-[10px]">
+                            <span class="h-[5px] w-[5px] rounded-full bg-green-500"></span>
+                            SERIKALI DIGITALI YA TANZANIA
+                        </div>
+
+                        <h1 class="mt-[8px] max-w-full text-center text-[19px] font-semibold leading-[1.2]
+                                   text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.65)]
+                                   sm:text-[25px] md:mt-[10px] md:text-[34px] lg:text-[38px]">
+                            Huduma za Taifa,
+                            <span class="text-yellow-400">Kidijitali</span>
+                            na
+                            <span class="relative inline-block">
+                                Rahisi
+                                <img src="eServices assets/Rahisi Highlight.png" alt="" aria-hidden="true"
+                                     class="absolute -right-[18px] -top-[9px] h-[12px] w-[18px] object-contain
+                                            sm:-right-[22px] sm:h-[16px] sm:w-[24px]
+                                            md:-right-[25px] md:h-[18px] md:w-[28px]">
+                            </span>
+                        </h1>
+
+                        <!-- SEARCH BAR -->
+                        <form
+                            role="search"
+                            @submit.prevent="$dispatch('search-services', searchQuery)"
+                            class="relative mt-[12px] flex h-[40px] w-[94%] max-w-[920px] items-center
+                                   rounded-full border border-white/50 bg-white/[0.94] px-4
+                                   shadow-[0_5px_18px_rgba(0,0,0,0.18)]
+                                   sm:mt-[15px] sm:h-[46px] sm:px-5 md:h-[50px]"
+                        >
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                 fill="none" stroke="currentColor" stroke-width="2"
+                                 aria-hidden="true"
+                                 class="search-icon-position h-[16px] w-[16px] shrink-0 text-gray-800
+                                        sm:h-[18px] sm:w-[18px]">
+                                <circle cx="10" cy="10" r="7.5"></circle>
+                                <path d="m16 16 5 5"></path>
+                            </svg>
+
+                            <input
+                                type="search"
+                                x-model="searchQuery"
+                                placeholder="Tafuta Huduma... Kitambulisho, leseni ya biashara etc"
+                                aria-label="Tafuta huduma"
+                                class="h-full w-full min-w-0 bg-transparent px-3 text-center text-[9px]
+                                       font-medium text-gray-900 outline-none placeholder:text-gray-500
+                                       sm:text-[11px] md:text-[12px]"
+                            >
+                        </form>
+
+                        <!-- HUDUMA MAARUFU -->
+                        <section
+                            id="huduma-maarufu"
+                            class="popular-position relative mt-[15px] w-full max-w-[1004px]
+                                   overflow-hidden text-white sm:mt-[18px] md:mt-[20px]"
+                        >
+                            <div class="popular-background"></div>
+
+                            <div class="relative z-10 h-full w-full px-3 pb-3 pt-[8px]
+                                        sm:px-6 sm:pt-[10px] md:px-[55px] md:pt-[12px]">
+                                <h2 class="popular-title-position text-center text-[13px] font-semibold
+                                           tracking-[0.01em] drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]
+                                           sm:text-[16px] md:text-[18px]">
+                                    Huduma Maarufu
+                                </h2>
+
+                                <div class="mt-[8px] grid grid-cols-2 gap-x-4 gap-y-1 sm:gap-x-8 sm:gap-y-2 md:mt-[12px] md:gap-x-[55px]">
+
+                                    <a href="#passport" class="popular-link">
+                                        <img src="eServices assets/Ombi la paspoti.png" alt="" class="passport-icon">
+                                        <span class="passport-text">Ombi la Pasipoti ya Tanzania</span>
+                                        <svg class="passport-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                                            <path d="M4 12h16"></path><path d="m14 6 6 6-6 6"></path>
+                                        </svg>
+                                    </a>
+
+                                    <a href="#health-insurance" class="popular-link">
+                                        <img src="eServices assets/Bima ya taifa.png" alt="" class="health-icon">
+                                        <span class="health-text">Mfuko wa Taifa wa Bima ya Afya</span>
+                                        <svg class="health-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                                            <path d="M4 12h16"></path><path d="m14 6 6 6-6 6"></path>
+                                        </svg>
+                                    </a>
+
+                                    <a href="#driving-license" class="popular-link">
+                                        <img src="eServices assets/Ombi la leseni .png" alt="" class="driving-icon">
+                                        <span class="driving-text">Ombi la Leseni ya Udereva</span>
+                                        <svg class="driving-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                                            <path d="M4 12h16"></path><path d="m14 6 6 6-6 6"></path>
+                                        </svg>
+                                    </a>
+
+                                    <a href="#visitor-registration" class="popular-link">
+                                        <img src="eServices assets/Usajili wa wageni.png" alt="" class="visitors-icon">
+                                        <span class="visitors-text">Usajili wa Wageni</span>
+                                        <svg class="visitors-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                                            <path d="M4 12h16"></path><path d="m14 6 6 6-6 6"></path>
+                                        </svg>
+                                    </a>
+
+                                    <a href="#tax" class="popular-link">
+                                        <img src="eServices assets/Taarifa za Kodi.png" alt="" class="tax-icon">
+                                        <span class="tax-text">Kuwasilisha Taarifa za Kodi</span>
+                                        <svg class="tax-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                                            <path d="M4 12h16"></path><path d="m14 6 6 6-6 6"></path>
+                                        </svg>
+                                    </a>
+
+                                    <a href="#business-registration" class="popular-link">
+                                        <img src="eServices assets/Usajili wa Biashara.png" alt="" class="business-icon">
+                                        <span class="business-text">Sajili Biashara</span>
+                                        <svg class="business-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                                            <path d="M4 12h16"></path><path d="m14 6 6 6-6 6"></path>
+                                        </svg>
+                                    </a>
+
+                                    <a href="#birth-certificate" class="popular-link">
+                                        <img src="eServices assets/Cheti cha kuzaliwa.png" alt="" class="birth-icon">
+                                        <span class="birth-text">Cheti Cha Kuzaliwa</span>
+                                        <svg class="birth-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                                            <path d="M4 12h16"></path><path d="m14 6 6 6-6 6"></path>
+                                        </svg>
+                                    </a>
+
+                                    <a href="#other-services" class="popular-link">
+                                        <img src="eServices assets/Huduma Zingine.png" alt="" class="other-icon">
+                                        <span class="other-text">Huduma Zingine</span>
+                                        <svg class="other-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                                            <path d="M4 12h16"></path><path d="m14 6 6 6-6 6"></path>
+                                        </svg>
+                                    </a>
+
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <!-- =====================================================
+         ECITIZEN / STATISTICS
+    ====================================================== -->
+
+    <section id="jiandikishe" class="relative min-h-[155px] w-full overflow-hidden sm:min-h-[170px] md:min-h-[185px]">
+        <img src="eServices assets/FRAME BACKGROUND.png" alt="" aria-hidden="true"
+             class="absolute inset-0 h-full w-full object-cover object-center">
+
+        <div class="ecitizen-position relative z-10 flex min-h-[155px] flex-col items-center sm:min-h-[170px] md:min-h-[185px]">
+            <div class="flex flex-col items-center pt-[12px] sm:pt-[15px] md:pt-[18px]">
+                <p class="text-[9px] font-semibold text-[#1749B8] sm:text-[10px] md:text-[12px]">
+                    Anza Kutumia eCitizen Leo
+                </p>
+
+                <div class="mt-[5px] flex items-center gap-2">
+                    <a href="#ingia" class="inline-flex h-[22px] items-center justify-center rounded-full bg-white px-3 text-[8px] font-semibold text-gray-700 shadow-sm">
+                        Ingia
+                    </a>
+                    <a href="#register" class="inline-flex h-[22px] items-center justify-center rounded-full bg-[#16B957] px-3 text-[8px] font-semibold text-white shadow-sm">
+                        Jiandikishe
+                    </a>
+                </div>
+            </div>
+
+            <div class="mt-[10px] flex h-[2px] w-[82%] max-w-[1150px] sm:mt-[12px] md:w-[80%]">
+                <div class="w-[75%] bg-[#2854C5]"></div>
+                <div class="w-[12.5%] bg-black"></div>
+                <div class="w-[12.5%] bg-green-500"></div>
+            </div>
+
+            <div class="mt-[10px] grid w-[90%] max-w-[1150px] grid-cols-3 text-center sm:mt-[12px] sm:w-[84%] md:w-[80%]">
+                <div>
+                    <p class="text-[7px] font-semibold text-[#1749B8] sm:text-[9px] md:text-[10px]">Huduma Za Serikali</p>
+                    <p class="mt-1 text-[20px] font-medium leading-none text-[#2854C5] sm:text-[24px] md:text-[28px]">120+</p>
+                </div>
+                <div>
+                    <p class="text-[7px] font-semibold text-[#1749B8] sm:text-[9px] md:text-[10px]">Wizara Za Serikali</p>
+                    <p class="mt-1 text-[20px] font-medium leading-none text-[#2854C5] sm:text-[24px] md:text-[28px]">30+</p>
+                </div>
+                <div>
+                    <p class="text-[7px] font-semibold text-[#1749B8] sm:text-[9px] md:text-[10px]">Wananchi Waliohudumiwa</p>
+                    <p class="mt-1 text-[20px] font-medium leading-none text-[#2854C5] sm:text-[24px] md:text-[28px]">1M+</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =====================================================
+         AINA ZA HUDUMA
+    ====================================================== -->
+
+    <section id="aina-za-huduma" class="w-full bg-white py-6 sm:py-8 md:py-10">
+        <div class="mx-auto w-[88%] max-w-[1020px] sm:w-[85%] md:w-[80%]">
+            <h2 class="text-[12px] font-semibold text-gray-900 sm:text-[15px] md:text-[18px]">
+                Aina Za Huduma
+            </h2>
+
+            <div class="mt-3 grid grid-cols-3 gap-3 sm:gap-6 md:gap-[35px]">
+                <div class="relative min-h-[145px] sm:min-h-[160px]">
+                    <div class="absolute left-0 top-0 text-[45px] font-semibold leading-none text-yellow-100 sm:text-[60px] md:text-[68px]">01</div>
+                    <div class="relative z-10 ml-4 pt-7 sm:ml-7 sm:pt-8">
+                        <h3 class="inline-block border-b border-gray-800 pb-1 text-[8px] font-semibold text-gray-900 sm:text-[10px] md:text-[13px]">Huduma kwa Wananchi</h3>
+                        <ul class="mt-2 list-disc pl-3 text-[7px] leading-[1.7] text-gray-600 sm:pl-4 sm:text-[9px] md:text-[10px]">
+                            <li><a href="#vitambulisho" class="underline">Vitambulisho</a></li>
+                            <li><a href="#kodi" class="underline">Kodi</a></li>
+                            <li><a href="#afya" class="underline">Afya</a></li>
+                            <li><a href="#uhamiaji" class="underline">Uhamiaji</a></li>
+                            <li><a href="#vyeti" class="underline">Vyeti</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="relative min-h-[145px] sm:min-h-[160px]">
+                    <div class="absolute left-0 top-0 text-[45px] font-semibold leading-none text-yellow-100 sm:text-[60px] md:text-[68px]">02</div>
+                    <div class="relative z-10 ml-4 pt-7 sm:ml-7 sm:pt-8">
+                        <h3 class="inline-block border-b border-gray-800 pb-1 text-[8px] font-semibold text-gray-900 sm:text-[10px] md:text-[13px]">Huduma kwa Biashara</h3>
+                        <ul class="mt-2 list-disc pl-3 text-[7px] leading-[1.7] text-gray-600 sm:pl-4 sm:text-[9px] md:text-[10px]">
+                            <li><a href="#brela" class="underline">BRELA</a></li>
+                            <li><a href="#tra" class="underline">TRA</a></li>
+                            <li><a href="#vibali" class="underline">Vibali</a></li>
+                            <li><a href="#fraodha" class="underline">Frodha</a></li>
+                            <li><a href="#leseni" class="underline">Leseni</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="relative min-h-[145px] sm:min-h-[160px]">
+                    <div class="absolute left-0 top-0 text-[45px] font-semibold leading-none text-yellow-100 sm:text-[60px] md:text-[68px]">03</div>
+                    <div class="relative z-10 ml-4 pt-7 sm:ml-7 sm:pt-8">
+                        <h3 class="inline-block border-b border-gray-800 pb-1 text-[8px] font-semibold text-gray-900 sm:text-[10px] md:text-[13px]">Huduma kwa Wageni</h3>
+                        <ul class="mt-2 list-disc pl-3 text-[7px] leading-[1.7] text-gray-600 sm:pl-4 sm:text-[9px] md:text-[10px]">
+                            <li><a href="#visa" class="underline">Visa</a></li>
+                            <li><a href="#vibali-wageni" class="underline">Vibali</a></li>
+                            <li><a href="#maombi-uwekezaji" class="underline">Maombi ya uwekezaji</a></li>
+                            <li><a href="#vibali-utalii" class="underline">Vibali vya utalii</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =====================================================
+         WIZARA
+    ====================================================== -->
+
+    <section id="wizara" class="w-full bg-white pb-8 sm:pb-10 md:pb-12">
+        <div class="mx-auto w-[88%] max-w-[1020px] sm:w-[85%] md:w-[80%]">
+            <div class="mb-3 flex items-center justify-between">
+                <h2 class="text-[12px] font-semibold sm:text-[15px] md:text-[18px]">Wizara</h2>
+                <a href="#all-ministries" class="text-[8px] text-blue-600 transition hover:text-blue-800 sm:text-[10px] md:text-[11px]">
+                    Ona Zote
+                </a>
+            </div>
+
+            <div class="grid grid-cols-2 gap-2 sm:gap-3 lg:grid-cols-3">
+                <a href="#nida" class="group flex min-h-[52px] min-w-0 items-center border border-gray-200 bg-white px-2 transition-all duration-300 hover:-translate-y-[3px] hover:border-gray-300 hover:shadow-[0_8px_20px_rgba(0,0,0,0.10)] sm:min-h-[65px] sm:px-3 md:min-h-[72px]">
+                    <img src="eServices assets/NIDA.png" alt="NIDA" class="h-[27px] w-[27px] shrink-0 object-contain transition-transform duration-300 group-hover:scale-105 sm:h-[38px] sm:w-[38px]">
+                    <span class="ml-2 min-w-0 break-words text-[6px] leading-[1.4] text-gray-600 transition-colors group-hover:text-gray-900 sm:text-[9px] md:text-[10px]">National Identification Authority (NIDA)</span>
+                </a>
+
+                <a href="#brela" class="group flex min-h-[52px] min-w-0 items-center border border-gray-200 bg-white px-2 transition-all duration-300 hover:-translate-y-[3px] hover:border-gray-300 hover:shadow-[0_8px_20px_rgba(0,0,0,0.10)] sm:min-h-[65px] sm:px-3 md:min-h-[72px]">
+                    <img src="eServices assets/BRELA.png" alt="BRELA" class="h-[27px] w-[36px] shrink-0 object-contain transition-transform duration-300 group-hover:scale-105 sm:h-[38px] sm:w-[52px]">
+                    <span class="ml-2 min-w-0 break-words text-[6px] leading-[1.4] text-gray-600 transition-colors group-hover:text-gray-900 sm:text-[9px] md:text-[10px]">Business Registrations and Licensing Agency (BRELA)</span>
+                </a>
+
+                <a href="#tra" class="group flex min-h-[52px] min-w-0 items-center border border-gray-200 bg-white px-2 transition-all duration-300 hover:-translate-y-[3px] hover:border-gray-300 hover:shadow-[0_8px_20px_rgba(0,0,0,0.10)] sm:min-h-[65px] sm:px-3 md:min-h-[72px]">
+                    <img src="eServices assets/Tanzania Revenue Authority.png" alt="TRA" class="h-[27px] w-[27px] shrink-0 object-contain transition-transform duration-300 group-hover:scale-105 sm:h-[38px] sm:w-[38px]">
+                    <span class="ml-2 min-w-0 break-words text-[6px] leading-[1.4] text-gray-600 transition-colors group-hover:text-gray-900 sm:text-[9px] md:text-[10px]">Tanzania Revenue Authority (TRA)</span>
+                </a>
+
+                <a href="#immigration" class="group flex min-h-[52px] min-w-0 items-center border border-gray-200 bg-white px-2 transition-all duration-300 hover:-translate-y-[3px] hover:border-gray-300 hover:shadow-[0_8px_20px_rgba(0,0,0,0.10)] sm:min-h-[65px] sm:px-3 md:min-h-[72px]">
+                    <img src="eServices assets/Immigration service department.png" alt="Immigration Services" class="h-[27px] w-[27px] shrink-0 object-contain transition-transform duration-300 group-hover:scale-105 sm:h-[38px] sm:w-[38px]">
+                    <span class="ml-2 min-w-0 break-words text-[6px] leading-[1.4] text-gray-600 transition-colors group-hover:text-gray-900 sm:text-[9px] md:text-[10px]">Immigration Services Department</span>
+                </a>
+
+                <a href="#rita" class="group flex min-h-[52px] min-w-0 items-center border border-gray-200 bg-white px-2 transition-all duration-300 hover:-translate-y-[3px] hover:border-gray-300 hover:shadow-[0_8px_20px_rgba(0,0,0,0.10)] sm:min-h-[65px] sm:px-3 md:min-h-[72px]">
+                    <img src="eServices assets/RITA.png" alt="RITA" class="h-[27px] w-[27px] shrink-0 object-contain transition-transform duration-300 group-hover:scale-105 sm:h-[38px] sm:w-[38px]">
+                    <span class="ml-2 min-w-0 break-words text-[6px] leading-[1.4] text-gray-600 transition-colors group-hover:text-gray-900 sm:text-[9px] md:text-[10px]">Registration Insolvency and Trusteeship Agency (RITA)</span>
+                </a>
+
+                <a href="#nhif" class="group flex min-h-[52px] min-w-0 items-center border border-gray-200 bg-white px-2 transition-all duration-300 hover:-translate-y-[3px] hover:border-gray-300 hover:shadow-[0_8px_20px_rgba(0,0,0,0.10)] sm:min-h-[65px] sm:px-3 md:min-h-[72px]">
+                    <img src="eServices assets/NHIF.png" alt="NHIF" class="h-[27px] w-[27px] shrink-0 object-contain transition-transform duration-300 group-hover:scale-105 sm:h-[38px] sm:w-[38px]">
+                    <span class="ml-2 min-w-0 break-words text-[6px] leading-[1.4] text-gray-600 transition-colors group-hover:text-gray-900 sm:text-[9px] md:text-[10px]">National Health Insurance Fund (NHIF)</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- =====================================================
+         HUDUMA ZOTE ZA SERIKALI SEHEMU MOJA
+    ====================================================== -->
+
+    <section
+        id="service-steps"
+        class="service-steps-section w-full bg-[#EEF1F3]"
+    >
+        <div class="service-steps-content">
+
+            <h2
+                class="service-steps-title text-[20px] font-bold leading-tight
+                       tracking-[-0.04em] text-[#343434]
+                       sm:text-[24px] md:text-[25px]"
+            >
+                Huduma Zote Za Serikali Sehemu
+                <span class="text-[#FFC928]">Moja</span>
+            </h2>
+
+            <p
+                class="service-steps-description mt-[7px] max-w-[1000px]
+                       text-[11px] leading-[1.7] text-[#454545]
+                       sm:text-[12px] md:text-[13px]"
+            >
+                Furahia urahisi wa huduma, pata taarifa kuhusu huduma za serikali mtandaoni
+                na fanya maombi kwa haraka na kwa urahisi kwa hatua nne tu.
+            </p>
+
+            <!-- FOUR SERVICE STEPS -->
+            <div
+                class="mt-[19px] grid grid-cols-2 gap-x-5 gap-y-7
+                       sm:mt-[21px] sm:grid-cols-4 sm:gap-x-5 sm:gap-y-0
+                       md:mt-[21px] md:gap-x-[35px]"
+            >
+
+                <a
+                    id="step-register"
+                    href="#register"
+                    class="service-step-link group flex min-w-0 flex-col items-start
+                           rounded-sm text-left text-[#343434]"
+                    aria-label="Jiandikishe: Fungua akaunti kwa namba ya Kitambulisho au pasipoti yako"
+                >
+                    <img
+                        src="eServices assets/Jiandikishe.png"
+                        alt="Ikoni ya kujiandikisha"
+                        class="service-step-icon"
+                    >
+
+                    <div class="service-step-text mt-[17px]">
+                        <h3 class="text-[12px] font-bold leading-tight sm:text-[12px] md:text-[13px]">
+                            Jiandikishe
+                        </h3>
+
+                        <p class="mt-[9px] max-w-[220px] text-[10px] leading-[1.7]
+                                  text-[#4B4B4B] sm:text-[11px] md:text-[12px]">
+                            Fungua akaunti kwa namba ya Kitambulisho au pasipoti yako
+                        </p>
+                    </div>
+                </a>
+
+                <a
+                    id="step-choose-service"
+                    href="#huduma-maarufu"
+                    class="service-step-link group flex min-w-0 flex-col items-start
+                           rounded-sm text-left text-[#343434]"
+                    aria-label="Chagua Huduma: Tafuta na chagua huduma unayohitaji kutoka orodha yetu"
+                >
+                    <img
+                        src="eServices assets/Chagua huduma.png"
+                        alt="Ikoni ya kuchagua huduma"
+                        class="service-step-icon"
+                    >
+
+                    <div class="service-step-text mt-[17px]">
+                        <h3 class="text-[12px] font-bold leading-tight sm:text-[12px] md:text-[13px]">
+                            Chagua Huduma
+                        </h3>
+
+                        <p class="mt-[9px] max-w-[220px] text-[10px] leading-[1.7]
+                                  text-[#4B4B4B] sm:text-[11px] md:text-[12px]">
+                            Tafuta na chagua huduma <br>unayohitaji kutoka orodha yetu
+                        </p>
+                    </div>
+                </a>
+
+                <a
+                    id="step-pay-online"
+                    href="#malipo"
+                    class="service-step-link group flex min-w-0 flex-col items-start
+                           rounded-sm text-left text-[#343434]"
+                    aria-label="Lipa Mtandaoni: Lipa kwa M-Pesa, kadi ya benki au njia nyingine za malipo"
+                >
+                    <img
+                        src="eServices assets/lipa mtandaoni.png"
+                        alt="Ikoni ya malipo ya mtandaoni"
+                        class="service-step-icon"
+                    >
+
+                    <div class="service-step-text mt-[17px]">
+                        <h3 class="text-[12px] font-bold leading-tight sm:text-[12px] md:text-[13px]">
+                            Lipa Mtandaoni
+                        </h3>
+
+                        <p class="mt-[9px] max-w-[220px] text-[10px] leading-[1.7]
+                                  text-[#4B4B4B] sm:text-[11px] md:text-[12px]">
+                            Lipa kwa M-Pesa, kadi ya benki, <br>au njia nyingine za malipo
+                        </p>
+                    </div>
+                </a>
+
+                <a
+                    id="step-receive-service"
+                    href="#huduma-zangu"
+                    class="service-step-link group flex min-w-0 flex-col items-start
+                           rounded-sm text-left text-[#343434]"
+                    aria-label="Pokea Huduma: Fuatilia ombi na upokee hati yako kwa njia ya kidijitali"
+                >
+                    <img
+                        src="eServices assets/Pokea Huduma.png"
+                        alt="Ikoni ya kupokea huduma"
+                        class="service-step-icon"
+                    >
+
+                    <div class="service-step-text mt-[17px]">
+                        <h3 class="text-[12px] font-bold leading-tight sm:text-[12px] md:text-[13px]">
+                            Pokea Huduma
+                        </h3>
+
+                        <p class="mt-[9px] max-w-[220px] text-[10px] leading-[1.7]
+                                  text-[#4B4B4B] sm:text-[11px] md:text-[12px]">
+                            Fuatilia ombi na upokee hati <br>yako kwa njia ya kidijitali
+                        </p>
+                    </div>
+                </a>
+
+            </div>
+        </div>
+    </section>
+<!-- =====================================================
+     FINAL FOOTER: BLACK FOOTER
+     HTML + TAILWIND CSS + ALPINE.JS
+     Automatic copyright year
+====================================================== -->
+
+<footer
+    id="footer"
+    x-data="{
+        currentYear: new Date().getFullYear()
+    }"
+    class="w-full bg-black text-[#f5f5f5]
+           pt-12 pb-7 font-jakarta"
+>
+    <div class="mx-auto w-[min(1000px,calc(100%-48px))]">
+
+        <!-- TOP FOOTER ROW -->
+        <div
+            class="flex items-start justify-between gap-8 pb-9
+                   max-md:gap-6 max-sm:flex-col max-sm:gap-7
+                   max-sm:pb-6"
+        >
+
+            <!-- BRAND, TAGLINE AND NAVIGATION -->
+            <div class="min-w-0 flex-1">
+
+                <a
+                    href="#home"
+                    class="inline-block no-underline"
+                    aria-label="Tanzania eServices home"
+                >
+                    <p class="m-0 text-[7px] leading-[1.5]
+                              font-normal text-[#c8c8c8]">
+                        Jamhuri ya Muungano wa Tanzania
+                    </p>
+
+                    <span
+                        class="mt-px inline-block text-[27px]
+                               font-semibold leading-[1.1]
+                               tracking-[-1.2px] text-white
+                               max-sm:text-[25px]"
+                    >
+                        eServices
+                    </span>
+                </a>
+
+                <p
+                    class="mt-[25px] text-xs leading-[1.7]
+                           font-normal text-[#d1d1d1]
+                           max-md:text-[11px]
+                           max-sm:mt-[18px]"
+                >
+                    Kuwapatia Watanzania huduma za kidijitali
+                    <br class="hidden sm:block">
+                    kwa urahisi.
+                </p>
+
+                <!-- FOOTER NAVIGATION -->
+                <nav
+                    class="mt-[26px] flex flex-wrap items-center
+                           gap-x-[27px] gap-y-3
+                           max-md:mt-[22px] max-md:gap-x-[18px]
+                           max-sm:mt-[22px]
+                           max-sm:gap-x-[17px] max-sm:gap-y-[13px]"
+                    aria-label="Footer navigation"
+                >
+                    <a
+                        href="#home"
+                        class="text-[11px] font-semibold
+                               text-[#e0e0e0] no-underline
+                               transition-colors duration-200
+                               hover:text-[#b8c9e8]
+                               focus-visible:outline
+                               focus-visible:outline-2
+                               focus-visible:outline-white
+                               focus-visible:outline-offset-4
+                               max-md:text-[10px]"
+                    >
+                        Nyumbani
+                    </a>
+
+                    <a
+                        href="#aina-za-huduma"
+                        class="text-[11px] font-semibold
+                               text-[#e0e0e0] no-underline
+                               transition-colors duration-200
+                               hover:text-[#b8c9e8]
+                               focus-visible:outline
+                               focus-visible:outline-2
+                               focus-visible:outline-white
+                               focus-visible:outline-offset-4
+                               max-md:text-[10px]"
+                    >
+                        Kitaifa
+                    </a>
+
+                    <a
+                        href="#msaada"
+                        class="text-[11px] font-semibold
+                               text-[#e0e0e0] no-underline
+                               transition-colors duration-200
+                               hover:text-[#b8c9e8]
+                               focus-visible:outline
+                               focus-visible:outline-2
+                               focus-visible:outline-white
+                               focus-visible:outline-offset-4
+                               max-md:text-[10px]"
+                    >
+                        Msaada na Huduma kwa Wateja
+                    </a>
+
+                    <a
+                        href="#sera-ya-faragha"
+                        class="text-[11px] font-semibold
+                               text-[#e0e0e0] no-underline
+                               transition-colors duration-200
+                               hover:text-[#b8c9e8]
+                               focus-visible:outline
+                               focus-visible:outline-2
+                               focus-visible:outline-white
+                               focus-visible:outline-offset-4
+                               max-md:text-[10px]"
+                    >
+                        Sera ya Faragha
+                    </a>
+                </nav>
+            </div>
+
+            <!-- APP STORE DOWNLOAD BADGES -->
+            <div
+                class="flex shrink-0 basis-[106px] flex-col
+                       items-start gap-[11px]
+                       max-sm:grid max-sm:grid-cols-2
+                       max-sm:items-center max-sm:gap-3"
+            >
+                <h2
+                    class="mb-px text-xs font-semibold
+                           text-[#f4f4f4]
+                           max-sm:col-span-full"
+                >
+                    Get the app
+                </h2>
+
+                <!-- APP STORE -->
+                <a
+                    href="https://www.apple.com/app-store/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Download on the App Store"
+                    class="flex h-[33px] w-[106px] items-center
+                           justify-start gap-[5px] rounded-md
+                           border border-[#d4d4d4] px-[6px] py-[3px]
+                           text-white no-underline
+                           transition duration-200
+                           hover:-translate-y-px hover:bg-[#252525]
+                           focus-visible:outline
+                           focus-visible:outline-2
+                           focus-visible:outline-white
+                           focus-visible:outline-offset-4"
+                >
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        aria-hidden="true"
+                        class="h-[22px] w-[19px] shrink-0"
+                    >
+                        <path d="M16.37 12.7c.02 2.2 1.93 2.93 1.95 2.94-.02.05-.3 1.04-.99 2.05-.6.88-1.23 1.75-2.22 1.77-.97.02-1.28-.57-2.4-.57-1.13 0-1.47.55-2.39.59-.96.04-1.69-.94-2.3-1.81-1.25-1.8-2.2-5.08-.92-7.3a3.56 3.56 0 0 1 3.02-1.83c.94-.02 1.82.63 2.4.63.57 0 1.65-.78 2.78-.66.47.02 1.8.19 2.65 1.43-.07.04-1.58.92-1.58 2.76ZM14.55 6.98a3.4 3.4 0 0 0 .8-2.46 3.46 3.46 0 0 0-2.25 1.16 3.2 3.2 0 0 0-.82 2.38 2.88 2.88 0 0 0 2.27-1.08Z"/>
+                    </svg>
+
+                    <span class="flex min-w-0 flex-col
+                                 justify-center leading-[1.05]">
+                        <span class="whitespace-nowrap text-[6px]">
+                            Download on the
+                        </span>
+                        <span
+                            class="whitespace-nowrap text-xs
+                                   font-semibold tracking-[-0.3px]"
+                        >
+                            App Store
+                        </span>
+                    </span>
+                </a>
+
+                <!-- GOOGLE PLAY -->
+                <a
+                    href="https://play.google.com/store"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Get it on Google Play"
+                    class="flex h-[33px] w-[106px] items-center
+                           justify-start gap-[5px] rounded-md
+                           border border-[#d4d4d4] px-[6px] py-[3px]
+                           text-white no-underline
+                           transition duration-200
+                           hover:-translate-y-px hover:bg-[#252525]
+                           focus-visible:outline
+                           focus-visible:outline-2
+                           focus-visible:outline-white
+                           focus-visible:outline-offset-4"
+                >
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                        class="h-[22px] w-[19px] shrink-0"
+                    >
+                        <path
+                            d="M3.3 2.6 14 12 3.3 21.4c-.3-.3-.5-.7-.5-1.2V3.8c0-.5.2-.9.5-1.2Z"
+                            fill="#ffffff"
+                        />
+                        <path
+                            d="m14 12 3.2-2.8-11.1-6.4c-.9-.5-1.8-.4-2.5.1L14 12Z"
+                            fill="#c9c9c9"
+                        />
+                        <path
+                            d="m14 12-10.4 9.1c.7.5 1.6.6 2.5.1l11.1-6.4L14 12Z"
+                            fill="#eeeeee"
+                        />
+                        <path
+                            d="m14 12 3.2-2.8 3.2 1.9c1 .6 1 1.4 0 2l-3.2 1.9L14 12Z"
+                            fill="#a8a8a8"
+                        />
+                    </svg>
+
+                    <span class="flex min-w-0 flex-col
+                                 justify-center leading-[1.05]">
+                        <span class="whitespace-nowrap text-[6px]">
+                            GET IT ON
+                        </span>
+                        <span
+                            class="whitespace-nowrap text-xs
+                                   font-semibold tracking-[-0.3px]"
+                        >
+                            Google Play
+                        </span>
+                    </span>
+                </a>
+            </div>
+        </div>
+
+        <!-- HORIZONTAL DIVIDER -->
+        <hr class="m-0 h-px w-full border-0 bg-[#343b43]">
+
+        <!-- COPYRIGHT AND SOCIAL LINKS -->
+        <div
+            class="flex items-center justify-between gap-5 pt-[23px]
+                   max-md:pt-[19px]
+                   max-sm:flex-col max-sm:items-start
+                   max-sm:gap-[18px] max-sm:pt-[18px]"
+        >
+
+            <!-- AUTOMATIC COPYRIGHT YEAR -->
+            <p
+                class="m-0 text-[11px] leading-[1.7]
+                       text-[#a7a7a7]
+                       max-md:text-[10px]
+                       max-sm:text-[9px]"
+            >
+                © <span x-text="currentYear"></span>
+                Jamhuri ya Muungano wa Tanzania.
+                Haki zote zimehifadhiwa.
+            </p>
+
+            <!-- SOCIAL MEDIA LINKS -->
+            <div
+                class="flex shrink-0 items-center gap-[18px]
+                       max-md:gap-[13px] max-sm:gap-[18px]"
+                aria-label="Social media links"
+            >
+
+                <!-- TWITTER / X -->
+                <a
+                    href="https://twitter.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Twitter"
+                    class="inline-flex h-[17px] w-[17px]
+                           items-center justify-center
+                           text-[#a4adba] transition duration-200
+                           hover:-translate-y-0.5 hover:text-white
+                           focus-visible:rounded-sm
+                           focus-visible:outline
+                           focus-visible:outline-2
+                           focus-visible:outline-white
+                           focus-visible:outline-offset-4"
+                >
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                        class="block h-full w-full fill-current"
+                    >
+                        <path d="M22 5.9a8 8 0 0 1-2.36.65 4.12 4.12 0 0 0 1.8-2.27 8.22 8.22 0 0 1-2.6.99 4.1 4.1 0 0 0-7 3.74A11.65 11.65 0 0 1 3.38 4.73a4.1 4.1 0 0 0 1.27 5.48 4.05 4.05 0 0 1-1.86-.52v.05a4.1 4.1 0 0 0 3.29 4.02 4.12 4.12 0 0 1-1.85.07 4.11 4.11 0 0 0 3.83 2.85A8.24 8.24 0 0 1 2 18.39a11.63 11.63 0 0 0 6.29 1.84c7.55 0 11.68-6.25 11.68-11.68l-.01-.53A8.35 8.35 0 0 0 22 5.9Z"/>
+                    </svg>
+                </a>
+
+                <!-- LINKEDIN -->
+                <a
+                    href="https://www.linkedin.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="LinkedIn"
+                    class="inline-flex h-[17px] w-[17px]
+                           items-center justify-center
+                           text-[#a4adba] transition duration-200
+                           hover:-translate-y-0.5 hover:text-white
+                           focus-visible:rounded-sm
+                           focus-visible:outline
+                           focus-visible:outline-2
+                           focus-visible:outline-white
+                           focus-visible:outline-offset-4"
+                >
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                        class="block h-full w-full fill-current"
+                    >
+                        <path d="M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2ZM8.34 18H5.67V9.4h2.67V18ZM7 8.23a1.55 1.55 0 1 1 .02-3.1 1.55 1.55 0 0 1-.02 3.1ZM18.33 18h-2.66v-4.18c0-1-.02-2.28-1.39-2.28-1.39 0-1.6 1.08-1.6 2.2V18h-2.66V9.4h2.55v1.17h.04a2.8 2.8 0 0 1 2.52-1.39c2.69 0 3.2 1.77 3.2 4.07V18Z"/>
+                    </svg>
+                </a>
+
+                <!-- FACEBOOK -->
+                <a
+                    href="https://www.facebook.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Facebook"
+                    class="inline-flex h-[17px] w-[17px]
+                           items-center justify-center
+                           text-[#a4adba] transition duration-200
+                           hover:-translate-y-0.5 hover:text-white
+                           focus-visible:rounded-sm
+                           focus-visible:outline
+                           focus-visible:outline-2
+                           focus-visible:outline-white
+                           focus-visible:outline-offset-4"
+                >
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                        class="block h-full w-full fill-current"
+                    >
+                        <path d="M12 2a10 10 0 1 0 1.72 19.85v-7.02h-2.36v-2.83h2.36v-2.1c0-2.34 1.39-3.64 3.53-3.64 1.02 0 2.08.18 2.08.18v2.29h-1.17c-1.15 0-1.51.71-1.51 1.44V12h2.57l-.41 2.83h-2.16v7.02A10 10 0 0 0 12 2Z"/>
+                    </svg>
+                </a>
+
+                <!-- GITHUB -->
+                <a
+                    href="https://github.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="GitHub"
+                    class="inline-flex h-[17px] w-[17px]
+                           items-center justify-center
+                           text-[#a4adba] transition duration-200
+                           hover:-translate-y-0.5 hover:text-white
+                           focus-visible:rounded-sm
+                           focus-visible:outline
+                           focus-visible:outline-2
+                           focus-visible:outline-white
+                           focus-visible:outline-offset-4"
+                >
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                        class="block h-full w-full fill-current"
+                    >
+                        <path d="M12 .8a11.2 11.2 0 0 0-3.54 21.83c.56.1.76-.24.76-.54v-2.1c-3.1.67-3.76-1.32-3.76-1.32-.51-1.3-1.24-1.65-1.24-1.65-1.01-.69.08-.68.08-.68 1.12.08 1.7 1.15 1.7 1.15.99 1.7 2.6 1.21 3.23.92.1-.72.39-1.21.7-1.49-2.47-.28-5.07-1.24-5.07-5.52 0-1.22.44-2.21 1.15-2.99-.12-.28-.5-1.42.11-2.96 0 0 .94-.3 3.08 1.14a10.72 10.72 0 0 1 5.6 0c2.14-1.44 3.08-1.14 3.08-1.14.61 1.54.23 2.68.11 2.96.72.78 1.15 1.77 1.15 2.99 0 4.29-2.6 5.23-5.08 5.51.4.35.75 1.03.75 2.08v3.1c0 .3.2.65.77.54A11.2 11.2 0 0 0 12 .8Z"/>
+                    </svg>
+                </a>
+
+            </div>
+        </div>
+    </div>
+</footer>
+</body>
+</html>line-2
+                           focus-visible:outline-offset-[5px] focus-visible:outline-blue-600"
+                    aria-label="Chagua Huduma: Tafuta na chagua huduma unayohitaji kutoka orodha yetu"
+                >
+                    <img
+                        src="eServices assets/Chagua huduma.png"
+                        alt="Ikoni ya kuchagua huduma"
+                        class="h-[36px] w-[36px] object-contain transition-transform duration-[250ms] ease-[ease]
+                               group-hover:-translate-y-[3px]
+                               max-md:h-[31px] max-md:w-[31px]
+                               max-[520px]:h-[27px] max-[520px]:w-[27px]"
+                    >
+
+                    <div class="mt-[17px]">
+                        <h3 class="text-[12px] font-bold leading-tight sm:text-[12px] md:text-[13px]">
+                            Chagua Huduma
+                        </h3>
+
+                        <p class="mt-[9px] max-w-[220px] text-[10px] leading-[1.7]
+                                  text-[#4B4B4B] sm:text-[11px] md:text-[12px]">
+                            Tafuta na chagua huduma <br>unayohitaji kutoka orodha yetu
+                        </p>
+                    </div>
+                </a>
+
+                <a
+                    id="step-pay-online"
+                    href="#malipo"
+                    class="group flex min-w-0 flex-col items-start
+                           rounded-sm text-left text-[#343434]
+                           focus-visible:rounded-[4px] focus-visible:outline focus-visible:outline-2
+                           focus-visible:outline-offset-[5px] focus-visible:outline-blue-600"
+                    aria-label="Lipa Mtandaoni: Lipa kwa M-Pesa, kadi ya benki au njia nyingine za malipo"
+                >
+                    <img
+                        src="eServices assets/lipa mtandaoni.png"
+                        alt="Ikoni ya malipo ya mtandaoni"
+                        class="h-[36px] w-[36px] object-contain transition-transform duration-[250ms] ease-[ease]
+                               group-hover:-translate-y-[3px]
+                               max-md:h-[31px] max-md:w-[31px]
+                               max-[520px]:h-[27px] max-[520px]:w-[27px]"
+                    >
+
+                    <div class="mt-[17px]">
+                        <h3 class="text-[12px] font-bold leading-tight sm:text-[12px] md:text-[13px]">
+                            Lipa Mtandaoni
+                        </h3>
+
+                        <p class="mt-[9px] max-w-[220px] text-[10px] leading-[1.7]
+                                  text-[#4B4B4B] sm:text-[11px] md:text-[12px]">
+                            Lipa kwa M-Pesa, kadi ya benki, <br>au njia nyingine za malipo
+                        </p>
+                    </div>
+                </a>
+
+                <a
+                    id="step-receive-service"
+                    href="#huduma-zangu"
+                    class="group flex min-w-0 flex-col items-start
+                           rounded-sm text-left text-[#343434]
+                           focus-visible:rounded-[4px] focus-visible:outline focus-visible:outline-2
+                           focus-visible:outline-offset-[5px] focus-visible:outline-blue-600"
+                    aria-label="Pokea Huduma: Fuatilia ombi na upokee hati yako kwa njia ya kidijitali"
+                >
+                    <img
+                        src="eServices assets/Pokea Huduma.png"
+                        alt="Ikoni ya kupokea huduma"
+                        class="h-[36px] w-[36px] object-contain transition-transform duration-[250ms] ease-[ease]
+                               group-hover:-translate-y-[3px]
+                               max-md:h-[31px] max-md:w-[31px]
+                               max-[520px]:h-[27px] max-[520px]:w-[27px]"
+                    >
+
+                    <div class="mt-[17px]">
+                        <h3 class="text-[12px] font-bold leading-tight sm:text-[12px] md:text-[13px]">
+                            Pokea Huduma
+                        </h3>
+
+                        <p class="mt-[9px] max-w-[220px] text-[10px] leading-[1.7]
+                                  text-[#4B4B4B] sm:text-[11px] md:text-[12px]">
+                            Fuatilia ombi na upokee hati <br>yako kwa njia ya kidijitali
+                        </p>
+                    </div>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+<!-- =====================================================
+     FINAL FOOTER: BLACK FOOTER
+     HTML + TAILWIND CSS + ALPINE.JS
+     Automatic copyright year
+====================================================== -->
+
+<footer
+    id="footer"
+    x-data="{
+        currentYear: new Date().getFullYear()
+    }"
+    class="w-full bg-black text-[#f5f5f5]
+           pt-12 pb-7 font-jakarta"
+>
+    <div class="mx-auto w-[min(1000px,calc(100%-48px))]">
+
+        <!-- TOP FOOTER ROW -->
+        <div
+            class="flex items-start justify-between gap-8 pb-9
+                   max-md:gap-6 max-sm:flex-col max-sm:gap-7
+                   max-sm:pb-6"
+        >
+
+            <!-- BRAND, TAGLINE AND NAVIGATION -->
+            <div class="min-w-0 flex-1">
+
+                <a
+                    href="#home"
+                    class="inline-block no-underline"
+                    aria-label="Tanzania eServices home"
+                >
+                    <p class="m-0 text-[7px] leading-[1.5]
+                              font-normal text-[#c8c8c8]">
+                        Jamhuri ya Muungano wa Tanzania
+                    </p>
+
+                    <span
+                        class="mt-px inline-block text-[27px]
+                               font-semibold leading-[1.1]
+                               tracking-[-1.2px] text-white
+                               max-sm:text-[25px]"
+                    >
+                        eServices
+                    </span>
+                </a>
+
+                <p
+                    class="mt-[25px] text-xs leading-[1.7]
+                           font-normal text-[#d1d1d1]
+                           max-md:text-[11px]
+                           max-sm:mt-[18px]"
+                >
+                    Kuwapatia Watanzania huduma za kidijitali
+                    <br class="hidden sm:block">
+                    kwa urahisi.
+                </p>
+
+                <!-- FOOTER NAVIGATION -->
+                <nav
+                    class="mt-[26px] flex flex-wrap items-center
+                           gap-x-[27px] gap-y-3
+                           max-md:mt-[22px] max-md:gap-x-[18px]
+                           max-sm:mt-[22px]
+                           max-sm:gap-x-[17px] max-sm:gap-y-[13px]"
+                    aria-label="Footer navigation"
+                >
+                    <a
+                        href="#home"
+                        class="text-[11px] font-semibold
+                               text-[#e0e0e0] no-underline
+                               transition-colors duration-200
+                               hover:text-[#b8c9e8]
+                               focus-visible:outline
+                               focus-visible:outline-2
+                               focus-visible:outline-white
+                               focus-visible:outline-offset-4
+                               max-md:text-[10px]"
+                    >
+                        Nyumbani
+                    </a>
+
+                    <a
+                        href="#aina-za-huduma"
+                        class="text-[11px] font-semibold
+                               text-[#e0e0e0] no-underline
+                               transition-colors duration-200
+                               hover:text-[#b8c9e8]
+                               focus-visible:outline
+                               focus-visible:outline-2
+                               focus-visible:outline-white
+                               focus-visible:outline-offset-4
+                               max-md:text-[10px]"
+                    >
+                        Kitaifa
+                    </a>
+
+                    <a
+                        href="#msaada"
+                        class="text-[11px] font-semibold
+                               text-[#e0e0e0] no-underline
+                               transition-colors duration-200
+                               hover:text-[#b8c9e8]
+                               focus-visible:outline
+                               focus-visible:outline-2
+                               focus-visible:outline-white
+                               focus-visible:outline-offset-4
+                               max-md:text-[10px]"
+                    >
+                        Msaada na Huduma kwa Wateja
+                    </a>
+
+                    <a
+                        href="#sera-ya-faragha"
+                        class="text-[11px] font-semibold
+                               text-[#e0e0e0] no-underline
+                               transition-colors duration-200
+                               hover:text-[#b8c9e8]
+                               focus-visible:outline
+                               focus-visible:outline-2
+                               focus-visible:outline-white
+                               focus-visible:outline-offset-4
+                               max-md:text-[10px]"
+                    >
+                        Sera ya Faragha
+                    </a>
+                </nav>
+            </div>
+
+            <!-- APP STORE DOWNLOAD BADGES -->
+            <div
+                class="flex shrink-0 basis-[106px] flex-col
+                       items-start gap-[11px]
+                       max-sm:grid max-sm:grid-cols-2
+                       max-sm:items-center max-sm:gap-3"
+            >
+                <h2
+                    class="mb-px text-xs font-semibold
+                           text-[#f4f4f4]
+                           max-sm:col-span-full"
+                >
+                    Get the app
+                </h2>
+
+                <!-- APP STORE -->
+                <a
+                    href="https://www.apple.com/app-store/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Download on the App Store"
+                    class="flex h-[33px] w-[106px] items-center
+                           justify-start gap-[5px] rounded-md
+                           border border-[#d4d4d4] px-[6px] py-[3px]
+                           text-white no-underline
+                           transition duration-200
+                           hover:-translate-y-px hover:bg-[#252525]
+                           focus-visible:outline
+                           focus-visible:outline-2
+                           focus-visible:outline-white
+                           focus-visible:outline-offset-4"
+                >
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        aria-hidden="true"
+                        class="h-[22px] w-[19px] shrink-0"
+                    >
+                        <path d="M16.37 12.7c.02 2.2 1.93 2.93 1.95 2.94-.02.05-.3 1.04-.99 2.05-.6.88-1.23 1.75-2.22 1.77-.97.02-1.28-.57-2.4-.57-1.13 0-1.47.55-2.39.59-.96.04-1.69-.94-2.3-1.81-1.25-1.8-2.2-5.08-.92-7.3a3.56 3.56 0 0 1 3.02-1.83c.94-.02 1.82.63 2.4.63.57 0 1.65-.78 2.78-.66.47.02 1.8.19 2.65 1.43-.07.04-1.58.92-1.58 2.76ZM14.55 6.98a3.4 3.4 0 0 0 .8-2.46 3.46 3.46 0 0 0-2.25 1.16 3.2 3.2 0 0 0-.82 2.38 2.88 2.88 0 0 0 2.27-1.08Z"/>
+                    </svg>
+
+                    <span class="flex min-w-0 flex-col
+                                 justify-center leading-[1.05]">
+                        <span class="whitespace-nowrap text-[6px]">
+                            Download on the
+                        </span>
+                        <span
+                            class="whitespace-nowrap text-xs
+                                   font-semibold tracking-[-0.3px]"
+                        >
+                            App Store
+                        </span>
+                    </span>
+                </a>
+
+                <!-- GOOGLE PLAY -->
+                <a
+                    href="https://play.google.com/store"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Get it on Google Play"
+                    class="flex h-[33px] w-[106px] items-center
+                           justify-start gap-[5px] rounded-md
+                           border border-[#d4d4d4] px-[6px] py-[3px]
+                           text-white no-underline
+                           transition duration-200
+                           hover:-translate-y-px hover:bg-[#252525]
+                           focus-visible:outline
+                           focus-visible:outline-2
+                           focus-visible:outline-white
+                           focus-visible:outline-offset-4"
+                >
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                        class="h-[22px] w-[19px] shrink-0"
+                    >
+                        <path
+                            d="M3.3 2.6 14 12 3.3 21.4c-.3-.3-.5-.7-.5-1.2V3.8c0-.5.2-.9.5-1.2Z"
+                            fill="#ffffff"
+                        />
+                        <path
+                            d="m14 12 3.2-2.8-11.1-6.4c-.9-.5-1.8-.4-2.5.1L14 12Z"
+                            fill="#c9c9c9"
+                        />
+                        <path
+                            d="m14 12-10.4 9.1c.7.5 1.6.6 2.5.1l11.1-6.4L14 12Z"
+                            fill="#eeeeee"
+                        />
+                        <path
+                            d="m14 12 3.2-2.8 3.2 1.9c1 .6 1 1.4 0 2l-3.2 1.9L14 12Z"
+                            fill="#a8a8a8"
+                        />
+                    </svg>
+
+                    <span class="flex min-w-0 flex-col
+                                 justify-center leading-[1.05]">
+                        <span class="whitespace-nowrap text-[6px]">
+                            GET IT ON
+                        </span>
+                        <span
+                            class="whitespace-nowrap text-xs
+                                   font-semibold tracking-[-0.3px]"
+                        >
+                            Google Play
+                        </span>
+                    </span>
+                </a>
+            </div>
+        </div>
+
+        <!-- HORIZONTAL DIVIDER -->
+        <hr class="m-0 h-px w-full border-0 bg-[#343b43]">
+
+        <!-- COPYRIGHT AND SOCIAL LINKS -->
+        <div
+            class="flex items-center justify-between gap-5 pt-[23px]
+                   max-md:pt-[19px]
+                   max-sm:flex-col max-sm:items-start
+                   max-sm:gap-[18px] max-sm:pt-[18px]"
+        >
+
+            <!-- AUTOMATIC COPYRIGHT YEAR -->
+            <p
+                class="m-0 text-[11px] leading-[1.7]
+                       text-[#a7a7a7]
+                       max-md:text-[10px]
+                       max-sm:text-[9px]"
+            >
+                © <span x-text="currentYear"></span>
+                Jamhuri ya Muungano wa Tanzania.
+                Haki zote zimehifadhiwa.
+            </p>
+
+            <!-- SOCIAL MEDIA LINKS -->
+            <div
+                class="flex shrink-0 items-center gap-[18px]
+                       max-md:gap-[13px] max-sm:gap-[18px]"
+                aria-label="Social media links"
+            >
+
+                <!-- TWITTER / X -->
+                <a
+                    href="https://twitter.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Twitter"
+                    class="inline-flex h-[17px] w-[17px]
+                           items-center justify-center
+                           text-[#a4adba] transition duration-200
+                           hover:-translate-y-0.5 hover:text-white
+                           focus-visible:rounded-sm
+                           focus-visible:outline
+                           focus-visible:outline-2
+                           focus-visible:outline-white
+                           focus-visible:outline-offset-4"
+                >
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                        class="block h-full w-full fill-current"
+                    >
+                        <path d="M22 5.9a8 8 0 0 1-2.36.65 4.12 4.12 0 0 0 1.8-2.27 8.22 8.22 0 0 1-2.6.99 4.1 4.1 0 0 0-7 3.74A11.65 11.65 0 0 1 3.38 4.73a4.1 4.1 0 0 0 1.27 5.48 4.05 4.05 0 0 1-1.86-.52v.05a4.1 4.1 0 0 0 3.29 4.02 4.12 4.12 0 0 1-1.85.07 4.11 4.11 0 0 0 3.83 2.85A8.24 8.24 0 0 1 2 18.39a11.63 11.63 0 0 0 6.29 1.84c7.55 0 11.68-6.25 11.68-11.68l-.01-.53A8.35 8.35 0 0 0 22 5.9Z"/>
+                    </svg>
+                </a>
+
+                <!-- LINKEDIN -->
+                <a
+                    href="https://www.linkedin.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="LinkedIn"
+                    class="inline-flex h-[17px] w-[17px]
+                           items-center justify-center
+                           text-[#a4adba] transition duration-200
+                           hover:-translate-y-0.5 hover:text-white
+                           focus-visible:rounded-sm
+                           focus-visible:outline
+                           focus-visible:outline-2
+                           focus-visible:outline-white
+                           focus-visible:outline-offset-4"
+                >
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                        class="block h-full w-full fill-current"
+                    >
+                        <path d="M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2ZM8.34 18H5.67V9.4h2.67V18ZM7 8.23a1.55 1.55 0 1 1 .02-3.1 1.55 1.55 0 0 1-.02 3.1ZM18.33 18h-2.66v-4.18c0-1-.02-2.28-1.39-2.28-1.39 0-1.6 1.08-1.6 2.2V18h-2.66V9.4h2.55v1.17h.04a2.8 2.8 0 0 1 2.52-1.39c2.69 0 3.2 1.77 3.2 4.07V18Z"/>
+                    </svg>
+                </a>
+
+                <!-- FACEBOOK -->
+                <a
+                    href="https://www.facebook.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Facebook"
+                    class="inline-flex h-[17px] w-[17px]
+                           items-center justify-center
+                           text-[#a4adba] transition duration-200
+                           hover:-translate-y-0.5 hover:text-white
+                           focus-visible:rounded-sm
+                           focus-visible:outline
+                           focus-visible:outline-2
+                           focus-visible:outline-white
+                           focus-visible:outline-offset-4"
+                >
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                        class="block h-full w-full fill-current"
+                    >
+                        <path d="M12 2a10 10 0 1 0 1.72 19.85v-7.02h-2.36v-2.83h2.36v-2.1c0-2.34 1.39-3.64 3.53-3.64 1.02 0 2.08.18 2.08.18v2.29h-1.17c-1.15 0-1.51.71-1.51 1.44V12h2.57l-.41 2.83h-2.16v7.02A10 10 0 0 0 12 2Z"/>
+                    </svg>
+                </a>
+
+                <!-- GITHUB -->
+                <a
+                    href="https://github.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="GitHub"
+                    class="inline-flex h-[17px] w-[17px]
+                           items-center justify-center
+                           text-[#a4adba] transition duration-200
+                           hover:-translate-y-0.5 hover:text-white
+                           focus-visible:rounded-sm
+                           focus-visible:outline
+                           focus-visible:outline-2
+                           focus-visible:outline-white
+                           focus-visible:outline-offset-4"
+                >
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                        class="block h-full w-full fill-current"
+                    >
+                        <path d="M12 .8a11.2 11.2 0 0 0-3.54 21.83c.56.1.76-.24.76-.54v-2.1c-3.1.67-3.76-1.32-3.76-1.32-.51-1.3-1.24-1.65-1.24-1.65-1.01-.69.08-.68.08-.68 1.12.08 1.7 1.15 1.7 1.15.99 1.7 2.6 1.21 3.23.92.1-.72.39-1.21.7-1.49-2.47-.28-5.07-1.24-5.07-5.52 0-1.22.44-2.21 1.15-2.99-.12-.28-.5-1.42.11-2.96 0 0 .94-.3 3.08 1.14a10.72 10.72 0 0 1 5.6 0c2.14-1.44 3.08-1.14 3.08-1.14.61 1.54.23 2.68.11 2.96.72.78 1.15 1.77 1.15 2.99 0 4.29-2.6 5.23-5.08 5.51.4.35.75 1.03.75 2.08v3.1c0 .3.2.65.77.54A11.2 11.2 0 0 0 12 .8Z"/>
+                    </svg>
+                </a>
+
+            </div>
+        </div>
+    </div>
+</footer>
+</body>
+</html>
